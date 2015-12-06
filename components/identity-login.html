@@ -1,0 +1,36 @@
+<section class="identity-popin">
+    <header>
+        <popin-close-button></popin-close-button>
+        <div>{{accountLogin.title}}</div>
+    </header>
+    <section>
+        <form data-bind="submit: login">
+            <fieldset>
+                <label>{{identity.email}}</label>
+                <input type="text" data-bind="textInput: form.email, validate: form.email"/>
+            </fieldset>
+            <fieldset>
+                <label>{{identity.password}}</label>
+                <input type="password" data-bind="textInput: form.password, validate: form.password"/>
+            </fieldset>
+            <fieldset>
+                <label><input type="checkbox" data-bind="checked: form.rememberMe"/> {{identity.rememberMe}} </label>
+            </fieldset>
+            <div class="forgot-password">
+                <a href="#" data-bind="click: forgotPassword" class="hover">{{identity.forgotPassword}}</a>
+            </div>
+            <footer>
+                <button type="submit" data-bind="enable: form.isValid() && !loading()">{{identity.loginButton}}</button>
+            </footer>
+        </form>
+    </section>
+
+    <div class="or">{{identity.or}}</div>
+
+    <section class="social">
+        <button data-bind="click: facebookLogin"><span class="fa fa-facebook"></span> {{identity.connectFB}}</button>
+    </section>
+    <footer>
+        {{identity.notAmember}} <a href="" data-bind="click: register">{{identity.registerNow}}</a>
+    </footer>
+</section>

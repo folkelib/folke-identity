@@ -1,0 +1,20 @@
+{
+  "name": "folke-identity",
+  "homepage": "https://github.com/folkelib/folke-identity",
+  "authors": [
+    "Sidoine De Wispelaere <sidoine@sidoine.net>"
+  ],
+  "description": "",
+  "main": "folke-identity.js",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

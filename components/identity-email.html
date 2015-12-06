@@ -1,0 +1,21 @@
+<section class="identity-popin">
+    <header>
+        <popin-close-button></popin-close-button>
+        <div>{{identity.editEmail}}</div>
+    </header>
+
+    <div>
+        <form data-bind="submit: submit">
+            <fieldset>
+                <label>{{identity.email}}</label>
+                <input type="text" data-bind="textInput: form.email, validate: form.email"/>
+            </fieldset>
+            <fieldset>
+                <button type="submit" data-bind="enable: form.isValid() && !loading() && form.changed()">{{identity.edit}}</button>
+            </fieldset>
+        </form>
+    </div>
+    <footer>
+        <a href="#identity-password">{{identity.changePassword}}</a>
+    </footer>
+</section>
