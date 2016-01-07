@@ -1,0 +1,24 @@
+﻿<table >
+    <thead><tr>
+        <th>Nom</th>
+    </tr></thead>
+    <tbody data-bind="foreach: roles">
+    <tr>
+        <td data-bind="text: name"></td>
+        <td>
+            <button data-bind="click: $parent.remove">Supprimer</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- ko if: isEdit -->
+<form data-bind="submit: save">
+    <input type="text" data-bind="textInput: name"/>
+    <button type="submit">Ajouter</button>
+</form>
+<!-- /ko -->
+
+<!-- ko ifnot: isEdit -->
+<button data-bind="click: add">Nouveau</button>
+<!-- /ko -->

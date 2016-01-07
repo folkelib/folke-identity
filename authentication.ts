@@ -44,7 +44,7 @@ export class Authentication {
     public whenLogged() {
         return this.getLogged().then(logged => {
             if (logged) return Promise.resolve(this.account());
-            return Folke.showPopin<services.AccountViewModel>('identity-login');
+            return Folke.showPopin<any>('identity-login');
         })
     }
 

@@ -1,7 +1,7 @@
 /// <amd-dependency path="text!./identity-register.html" />
 import ko = require("knockout");
 import services = require('services/services');
-import * as Authentication from '../authentication';
+import * as Authentication from './authentication';
 import * as Folke from '../../folke-core/folke';
 import * as ServiceHelpers from "bower_components/folke-ko-service-helpers/folke-ko-service-helpers"
 
