@@ -1,5 +1,5 @@
 ﻿import * as ko from "knockout";
-import * as grid from "bower_components/folke-ko-grid/folke-ko-grid";
+import * as grid from "../folke-ko-grid/folke-ko-grid";
 import * as services from "services/services";
 import * as authentication from './authentication';
 

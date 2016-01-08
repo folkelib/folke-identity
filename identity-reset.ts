@@ -2,7 +2,7 @@
 import ko = require("knockout");
 import services = require('services/services');
 import * as Authentication from './authentication';
-import * as Folke from '../../folke-core/folke';
+import * as Folke from '../folke-core/folke';
 
 export class IdentityResetViewModel {
     public form = new services.ResetPasswordView();

@@ -2,8 +2,8 @@
 import ko = require("knockout");
 import services = require('services/services');
 import authentication = require('./authentication');
-import * as Folke from '../../folke-core/folke';
-import * as ServiceHelpers from "bower_components/folke-ko-service-helpers/folke-ko-service-helpers"
+import * as Folke from '../folke-core/folke';
+import * as ServiceHelpers from "../folke-ko-service-helpers/folke-ko-service-helpers"
 
 export class IdentityLoginViewModel {
     form = new services.LoginView();
