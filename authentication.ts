@@ -17,16 +17,19 @@ export interface AccountView {
 export class Authentication {
     public account = ko.observable<AccountView>();
     public hideEmailConfirmBar = ko.observable(false);
+    public roles = ko.observableArray<string>();
 
     public constructor() {
         this.updateMe();
-    }
+     }
 
+    public rolesLoaded = ko.observable<boolean>(null);
     public accountLoaded = ko.pureComputed(() => this.account());
 
     public logged = ko.computed(() => this.account() && this.account().logged());
 
     public updateMe() {
+        this.updateRoles();
         return services.account.getMe({}).then(account => {
             this.account(account);
             return account;
@@ -39,6 +42,18 @@ export class Authentication {
     
     public getLogged() {
         return this.account.whenNotNull().then(account => account.logged());
+    }
+
+    public updateRoles() {
+        return services.account.getUserRoles({}).then(roles => {
+            this.roles(roles);
+            this.rolesLoaded(true);
+            return roles;
+        });
+    }
+
+    public hasRole(roleName: string) {
+        return this.rolesLoaded.whenNotNull().then(() => this.roles().indexOf(roleName) >= 0);
     }
 
     public whenLogged() {
