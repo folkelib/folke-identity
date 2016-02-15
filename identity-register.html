@@ -1,32 +1,36 @@
-<section class="identity-popin">
+<section class="identity-popin popin">
     <header>
         <popin-close-button></popin-close-button>
         <div>{{accountRegister.title}}</div>
     </header>
-    <form data-bind="submit: register">
-        <fieldset class="large">
-            <label>{{form.email}}</label>
-            <input type="text" data-bind="textInput: form.email, validate: form.email" />
-        </fieldset>
-        <fieldset class="large">
-            <label>{{form.password}}</label>
-            <input type="password" data-bind="textInput: form.password, validate: form.password" />
-        </fieldset>
-        <fieldset class="large">
-            <label>{{accountRegister.confirmPassword}}</label>
-            <input type="password" data-bind="textInput: form.confirmPassword, validate: form.confirmPassword" />
-        </fieldset>
+    <section>
+        <form data-bind="submit: register">
+            <fieldset class="large">
+                <label>{{form.email}}</label>
+                <input type="text" data-bind="textInput: form.email, validate: form.email"/>
+            </fieldset>
+            <fieldset class="large">
+                <label>{{form.password}}</label>
+                <input type="password" data-bind="textInput: form.password, validate: form.password"/>
+            </fieldset>
+            <fieldset class="large">
+                <label>{{accountRegister.confirmPassword}}</label>
+                <input type="password" data-bind="textInput: form.confirmPassword, validate: form.confirmPassword"/>
+            </fieldset>
 
-        <div>
-            <button type="submit" data-bind="enable: form.isValid() && !loading()">{{accountRegister.signupButton}}</button>
-        </div>
+            <div>
+                <button type="submit" class="fit button" data-bind="enable: form.isValid() && !loading()">{{accountRegister.signupButton}}</button>
+            </div>
+        </form>
+    </section>
 
-        <div class="orSep">{{identity.or}}</div>
+    <hr />
+    <div class="separator">{{identity.or}}</div>
 
-        <div class="social">
-            <button data-bind="click: facebookLogin"><span class="fa fa-facebook"></span> {{accountRegister.signupFB}}</button>
-        </div>
-    </form>
+    <section class="social">
+        <button class="button fit" data-bind="click: facebookLogin"><span class="fa fa-facebook"></span> {{accountRegister.signupFB}}</button>
+    </section>
+
     <footer>
         {{accountRegister.alreadyMember}} <a href="" data-bind="click: login">{{accountRegister.signin}}</a>
     </footer>

@@ -1,19 +1,20 @@
-<section class="identity-popin">
+<section class="identity-popin popin">
     <header>
         <popin-close-button></popin-close-button>
         <div>{{identity.accountForgot}}</div>
     </header>
-    <div>
+    <section>
         <form data-bind="submit: ask">
             <div>{{accountForgot.subtitle}}</div>
             <fieldset class="large">
                 <label>{{form.email}}</label>
-                <input type="text" data-bind="textInput: form.email" />
+                <input type="text" data-bind="textInput: form.email"/>
             </fieldset>
             <button class="button purple fit" type="submit">{{form.submit}}</button>
         </form>
-        <footer>
-            {{accountForgot.backTo}} <a data-bind="click: login" href="">{{accountForgot.signin}}</a>
-        </footer>
-    </div>
+    </section>
+
+    <footer>
+        {{accountForgot.backTo}} <a data-bind="click: login" href="">{{accountForgot.signin}}</a>
+    </footer>
 </section>

@@ -45,6 +45,7 @@ export class Authentication {
     }
 
     public updateRoles() {
+        this.rolesLoaded(null);
         return services.account.getUserRoles({}).then(roles => {
             this.roles(roles);
             this.rolesLoaded(true);
@@ -53,7 +54,11 @@ export class Authentication {
     }
 
     public hasRole(roleName: string) {
-        return this.rolesLoaded.whenNotNull().then(() => this.roles().indexOf(roleName) >= 0);
+        return this.roles().indexOf(roleName) >= 0;
+    }
+
+    public whenHasRole(roleName: string) {
+        return this.rolesLoaded.whenNotNull().then(() => this.hasRole(roleName));
     }
 
     public whenLogged() {
@@ -65,6 +70,19 @@ export class Authentication {
 
     public addLoggedRoute(route: string, viewId: string) {
         Folke.addRoute(route, parameters => this.whenLogged().then(x => Folke.goToView(viewId, parameters)));
+    }
+
+    public addRoleRoute(route: string, role: string, viewId: string) {
+        Folke.addRoute(route, parameters => this.whenLogged().then(x => this.whenHasRole(role))
+            .then(hasRole => {
+                if (hasRole) {
+                    Folke.goToView(viewId, parameters);
+                }
+                else {
+                    Folke.hidePopin();
+                    console.error(`Unauthorized access. Need role ${role}`);
+                }
+            }));
     }
 
     public message(message: string) {
