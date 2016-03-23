@@ -7,14 +7,12 @@ export class IdentityUsersViewModel {
     public filter = new services.UserSearchFilter();
 
     public users = grid.searchArray({
-        defaultSort: 'userName',
         request: services.account.search,
-        filter: this.filter,
-        limit: 10,
         columns: [
             { text: 'Nom', sort: 'userName' },
             { text: 'E-mail', sort: 'email' }
-        ]
+        ],
+        parameters: { limit: 10, sortColumn: 'userName', filter: this.filter }
     });
 
     constructor() {

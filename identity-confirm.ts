@@ -1,6 +1,4 @@
-/// <amd-dependency path="text!./account-confirm.html" />
 import ko = require("knockout");
-export var template: string = require("text!./account-confirm.html");
 import * as services from 'services/services';
 import * as Authentication from './authentication';
 import * as Folke from '../folke-core/folke';

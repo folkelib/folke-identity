@@ -53,6 +53,10 @@ export class Authentication {
         });
     }
 
+    public roleObservable(roleName: string) {
+        return ko.pureComputed(() => this.hasRole(roleName));
+    }
+
     public hasRole(roleName: string) {
         return this.roles().indexOf(roleName) >= 0;
     }

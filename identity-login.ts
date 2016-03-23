@@ -1,4 +1,3 @@
-/// <amd-dependency path="text!./identity-login.html" />
 import ko = require("knockout");
 import services = require('services/services');
 import authentication = require('./authentication');
