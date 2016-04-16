@@ -17,7 +17,7 @@
     "test",
     "tests"
   ],
-  "version": "1.0.5",
+  "version": "1.0.6",
   "dependencies": {
     "folke-core": "^1.0.4",
     "folke-menu": "^1.0.3",
