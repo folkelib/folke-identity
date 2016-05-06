@@ -6,7 +6,7 @@ import * as ServiceHelpers from "../folke-ko-service-helpers/folke-ko-service-he
 
 export class IdentityLoginViewModel {
     form = new services.LoginView();
-    providers = ko.observableArray<string>();
+    providers = ko.observableArray<services.AuthenticationDescription>();
     loading = services.loading;
     
     constructor(public parameters: Folke.Parameters<authentication.AccountView>) {
