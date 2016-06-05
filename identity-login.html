@@ -25,12 +25,16 @@
         </form>
     </section>
 
+    <!-- ko if: providers().length -->
     <hr />
     <div class="separator">{{identity.or}}</div>
 
     <section class="social">
-        <button class="button fit" data-bind="click: facebookLogin"><span class="fa fa-facebook"></span> {{identity.connectFB}}</button>
+        <!-- ko foreach: providers -->
+        <button class="button fit" data-bind="click: $parent.facebookLogin"><span class="fa fa-facebook"></span> {{identity.connectFB, displayName}}</button>
+        <!-- /ko -->
     </section>
+    <!-- /ko -->
     <footer>
         {{identity.notAmember}} <a href="" data-bind="click: register">{{identity.registerNow}}</a>
     </footer>

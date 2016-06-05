@@ -7,7 +7,7 @@
     rememberMe: "Se souvenir de moi",
     forgotPassword: 'Mot-de-passe oublié',
     loginButton: "Se connecter",
-    connectFB: "Se connecter avec Facebook",
+    connectFB: "Se connecter avec {0}",
     notAmember: "Pas encore membre ?",
     registerNow: "Inscrivez-vous !",
     or: 'ou'
