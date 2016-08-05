@@ -1,14 +1,14 @@
 import ko = require("knockout");
-import services = require('services/services');
+import { services, RegisterView, UserViewModel } from './services';
 import * as Authentication from './authentication';
-import * as Folke from '../folke-core/folke';
-import * as ServiceHelpers from "../folke-ko-service-helpers/folke-ko-service-helpers"
+import * as Folke from 'folke-core';
+import * as ServiceHelpers from "folke-ko-service-helpers"
 
-export class IdentityRegisterViewModel {
-    form = new services.RegisterView();
+export default class IdentityRegisterViewModel {
+    form = services.factories.createRegisterView();
     loading = services.loading;
 
-    constructor(public params: Folke.Parameters<Authentication.AccountView>) {
+    constructor(public params: Folke.Parameters<UserViewModel>) {
     }
 
     public login = () => Folke.default.showPopin('identity-login', this.params);
@@ -28,5 +28,3 @@ export class IdentityRegisterViewModel {
         window.open('/api/authentication/external-login' + ServiceHelpers.getQueryString({ provider: 'Facebook', returnUrl: window.location.toString() }), 'oauth', 'dialog');
     }
 }
-
-export var viewModel = IdentityRegisterViewModel;

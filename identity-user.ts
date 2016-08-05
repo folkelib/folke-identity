@@ -1,8 +1,8 @@
 ﻿import * as ko from "knockout";
-import * as services from "services/services";
+import { services, UserViewModel } from "./services";
 import * as authentication from "./authentication";
 
-class RoleView {
+export class RoleView {
     enabled = ko.observable(false);
     checked = ko.pureComputed({
         read: () => this.enabled(),
@@ -18,8 +18,8 @@ class RoleView {
     constructor(public name: string, private userId:string) {}
 }
 
-class ViewModel {
-    public user = ko.observable<authentication.AccountView>();
+export default class ViewModel {
+    public user = ko.observable<UserViewModel>();
     public roles = ko.observableArray<RoleView>();
     
     constructor(params) {
@@ -34,5 +34,3 @@ class ViewModel {
         });
     }
 }
-
-export var viewModel = ViewModel;

@@ -1,12 +1,7 @@
 ﻿import * as ko from "knockout";
-import * as services from "services/services";
+import { services, RoleView } from "./services";
 
-interface RoleView {
-    name: KnockoutObservable<string>;
-    id: any;
-}
-
-class IdentityRolesViewModel {
+export default class IdentityRolesViewModel {
     public roles = ko.observableArray<RoleView>();
     public name = ko.observable('');
     public isEdit = ko.observable(false);
@@ -22,5 +17,3 @@ class IdentityRolesViewModel {
     };
     public add = () => this.isEdit(true);
 }
-
-export var viewModel = IdentityRolesViewModel;

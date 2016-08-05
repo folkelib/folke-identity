@@ -1,12 +1,12 @@
 import ko = require("knockout");
-import services = require('services/services');
+import { services, ForgotPasswordView, UserViewModel } from './services';
 import authentication = require('./authentication');
-import * as Folke from '../folke-core/folke';
+import * as Folke from 'folke-core';
 
-export class viewModel {
-    public form = new services.ForgotPasswordView();
+export default class IdentityForgotViewModel {
+    public form = services.factories.createForgotPasswordView();
 
-    constructor(public parameters: Folke.Parameters<authentication.AccountView>) {
+    constructor(public parameters: Folke.Parameters<UserViewModel>) {
     }
 
     public dispose() {

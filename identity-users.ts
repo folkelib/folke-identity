@@ -1,10 +1,10 @@
 ﻿import * as ko from "knockout";
-import * as grid from "../folke-ko-grid/folke-ko-grid";
-import * as services from "services/services";
+import * as grid from "folke-ko-grid";
+import { services, UserSearchFilter, UserViewModel } from "./services";
 import * as authentication from './authentication';
 
-export class IdentityUsersViewModel {
-    public filter = new services.UserSearchFilter();
+export default class IdentityUsersViewModel {
+    public filter = services.factories.createUserSearchFilter();
 
     public users = grid.searchArray({
         request: services.account.search,
@@ -19,7 +19,5 @@ export class IdentityUsersViewModel {
         this.users.refresh();
     }
 
-    public goUser = (user:authentication.AccountView) => location.hash = 'user/' + user.id;
+    public goUser = (user:UserViewModel) => location.hash = 'user/' + user.id;
 }
-
-export var viewModel = IdentityUsersViewModel;

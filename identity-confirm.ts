@@ -1,9 +1,9 @@
 import ko = require("knockout");
-import * as services from 'services/services';
+import { services } from './services';
 import * as Authentication from './authentication';
-import * as Folke from '../folke-core/folke';
+import * as Folke from 'folke-core';
 
-export class viewModel {
+export default class ConfirmViewModel {
     constructor(params: Folke.Parameters<any>) {
         var accountId: number = params['id'];
         var code: string = params['code*'];

@@ -1,10 +1,10 @@
 import ko = require("knockout");
-import services = require('services/services');
+import { services, ResetPasswordView } from './services';
 import * as Authentication from './authentication';
-import * as Folke from '../folke-core/folke';
+import * as Folke from 'folke-core';
 
-export class IdentityResetViewModel {
-    public form = new services.ResetPasswordView();
+export default class IdentityResetViewModel {
+    public form = services.factories.createResetPasswordView();
     
     constructor(public params: Folke.Parameters<any>) {
         if (params['id'])
@@ -22,5 +22,3 @@ export class IdentityResetViewModel {
 
     public reset = () => services.authentication.resetPassword({ resetPasswordView: this.form }).then(() => this.params.resolve());
 }
-
-export var viewModel = IdentityResetViewModel;

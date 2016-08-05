@@ -1,28 +1,52 @@
-﻿import application from "../folke-core/folke";
+﻿import application from "folke-core";
 import authentication from './authentication';
-import menu from '../folke-menu/menu';
+import menu from 'folke-menu';
 import * as ko from 'knockout';
+import * as koPromise from 'folke-ko-promise';
 
-export function register(basePath:string) {
-    application.registerComponent(basePath, 'identity-email');
-    application.registerComponent(basePath, 'identity-forgot');
-    application.registerComponent(basePath, 'identity-login');
-    application.registerComponent(basePath, 'identity-password');
-    application.registerComponent(basePath, 'identity-register');
-    application.registerComponent(basePath, 'identity-reset');
+import email from './identity-email';
+import forgot from './identity-forgot';
+import password from './identity-password';
+import login from './identity-login';
+import register from './identity-register';
+import reset from './identity-reset';
+import users from './identity-users';
+import user from './identity-user';
+import roles from './identity-roles';
+import button from './identity-button';
+
+export {fr} from './fr';
+
+declare function require(id:string):string;
+
+function registerComponent<T>(name:string, viewModel: T){
+    ko.components.register(name, {
+        template: require(`text!./${name}.html`),
+        viewModel: viewModel
+    })
+}
+
+export function register() {
+    koPromise.register();
+    registerComponent('identity-email', email);
+    registerComponent('identity-forgot', forgot);
+    registerComponent('identity-password', password);
+    registerComponent('identity-login', login);
+    registerComponent('identity-register', register);
+    registerComponent('identity-reset', reset);
 }
 
 export function registerAdministration(basePath: string, role: string) {
-    application.registerComponent(basePath, 'identity-users');
+    registerComponent('identity-users', users);
     authentication.addRoleRoute('users', role, 'identity-users');
-    application.registerComponent(basePath, 'identity-user');
+    registerComponent('identity-user', user);
     authentication.addRoleRoute('user/{id}', role, 'identity-user');
-    application.registerComponent(basePath, 'identity-roles');
+    registerComponent('identity-roles', roles);
     authentication.addRoleRoute('roles', role, 'identity-roles');
 }
 
 export function registerMenu(basePath: string) {
-    application.registerComponent(basePath, 'identity-button');
+    registerComponent('identity-button', button);
     var subMenu = menu.addCustomSubMenu('identity-button');
     subMenu.addButton(ko.observable('Se déconnecter'), () => authentication.logout());
 }

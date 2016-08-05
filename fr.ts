@@ -1,4 +1,4 @@
-﻿export default {
+﻿export const fr = {
     changePassword: 'Modifier le mot-de-passe',
     edit: 'Modifier',
     email: 'E-mail',

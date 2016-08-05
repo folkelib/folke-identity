@@ -1,2 +1,4 @@
 *.js
 src/bower_components
+node_modules
+typings

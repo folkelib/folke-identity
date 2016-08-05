@@ -1,21 +1,9 @@
-﻿/// <amd-dependency path="../folke-ko-promise/folke-ko-promise" />
-import services = require('services/services');
+﻿import { services, UserViewModel } from './services';
 import ko = require('knockout');
-import Folke from '../folke-core/folke';
-
-export interface AccountView {
-    changed: KnockoutComputed<boolean>;
-
-    userName: KnockoutObservable<string>;
-    logged: KnockoutObservable<boolean>;
-    emailConfirmed: KnockoutObservable<boolean>;
-    email:KnockoutObservable<string>;
-    id: number;
-    hasPassword:KnockoutObservable<boolean>;
-}
+import Folke from 'folke-core';
 
 export class Authentication {
-    public account = ko.observable<AccountView>();
+    public account = ko.observable<UserViewModel>();
     public hideEmailConfirmBar = ko.observable(false);
     public roles = ko.observableArray<string>();
 

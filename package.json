@@ -1,0 +1,32 @@
+{
+  "name": "folke-identity",
+  "version": "1.0.7",
+  "description": "Works in pair with Folke.Identity.Server",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "typings install && tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/folkelib/folke-identity.git"
+  },
+  "author": "Sidoine De Wispelaere",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/folkelib/folke-identity/issues"
+  },
+  "homepage": "https://github.com/folkelib/folke-identity#readme",
+  "dependencies": {
+    "folke-core": "^1.0.7",
+    "folke-ko-grid": "^1.0.7",
+    "folke-ko-promise": "^1.0.1",
+    "folke-ko-service-helpers": "^1.0.4",
+    "folke-menu": "^1.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.10",
+    "typings": "^1.3.2"
+  }
+}

@@ -1,10 +1,10 @@
 import ko = require("knockout");
-import services = require('services/services');
+import { services, SetEmailView } from './services';
 import authentication = require('./authentication');
-import * as Folke from '../folke-core/folke';
+import * as Folke from 'folke-core';
 
-export class IdentityEmailViewModel {
-    public form = new services.SetEmailView();
+export default class IdentityEmailViewModel {
+    public form = services.factories.createEmailView();
     public loading = services.loading;
     
     constructor(public params: Folke.Parameters<any>) {
@@ -16,5 +16,3 @@ export class IdentityEmailViewModel {
 
     public submit = () => services.account.setEmail({ model: this.form }).then(() => this.params.resolve());
 }
-
-export var viewModel = IdentityEmailViewModel;
