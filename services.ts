@@ -11,6 +11,7 @@ export interface ForgotPasswordView {
 }
 
 export interface AuthenticationDescription {
+    authenticationScheme: ko.Observable<string>;
 }
 
 export interface ChangePasswordView {

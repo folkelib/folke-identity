@@ -11,5 +11,5 @@ export default class IdentityLoginViewModel {
     forgotPassword: () => Promise<UserViewModel>;
     register: () => Promise<UserViewModel>;
     dispose(): void;
-    facebookLogin: () => void;
+    facebookLogin: (provider: AuthenticationDescription) => void;
 }

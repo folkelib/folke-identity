@@ -27,7 +27,7 @@ export default class IdentityLoginViewModel {
     public dispose() {
     }
 
-    public facebookLogin = (provider: services.AuthenticationDescription) => {
+    public facebookLogin = (provider: AuthenticationDescription) => {
         window.open('/api/authentication/external-login' + ServiceHelpers.getQueryString({ provider: provider.authenticationScheme(), returnUrl: window.location.toString() }), 'oauth', 'dialog');
     }
 }
