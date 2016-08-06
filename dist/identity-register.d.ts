@@ -1,11 +1,11 @@
-import { RegisterView, UserViewModel } from './services';
+import { RegisterView, User } from './services';
 import * as Folke from 'folke-core';
 export default class IdentityRegisterViewModel {
-    params: Folke.Parameters<UserViewModel>;
+    params: Folke.Parameters<User>;
     form: RegisterView;
     loading: () => boolean;
-    constructor(params: Folke.Parameters<UserViewModel>);
-    login: () => Promise<UserViewModel>;
+    constructor(params: Folke.Parameters<User>);
+    login: () => Promise<User>;
     register: () => void;
     dispose(): void;
     facebookLogin: () => void;

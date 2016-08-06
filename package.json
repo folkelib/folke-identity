@@ -6,7 +6,8 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "typings install && tsc -p ."
+    "prepublish": "typings install && tsc -p .",
+    "watch": "tsc -watch"
   },
   "repository": {
     "type": "git",

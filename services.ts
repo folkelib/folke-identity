@@ -11,7 +11,7 @@ export interface ForgotPasswordView {
 }
 
 export interface AuthenticationDescription {
-    authenticationScheme: ko.Observable<string>;
+    authenticationScheme: string;
 }
 
 export interface ChangePasswordView {
@@ -22,7 +22,7 @@ export interface LoginView {
 }
 
 export interface LoginResultView {
-    status: () => LoginStatusEnum;
+    status: number;
 }
 
 export interface RegisterView {
@@ -30,12 +30,12 @@ export interface RegisterView {
 }
 
 export interface ResetPasswordView {
-    userId: ko.Observable<number>;
+    userId: ko.Observable<any>;
     code: ko.Observable<string>;
 }
 
 export interface RoleView {
-    name: ko.Observable<string>;
+    name: string;
     id: any;
 }
 
@@ -47,21 +47,19 @@ export interface UserSearchFilter {
 
 }
 
-export interface UserViewModel {
-    changed: ko.Computed<boolean>;
-
-    userName: ko.Observable<string>;
-    logged:  ko.Observable<boolean>;
-    emailConfirmed:  ko.Observable<boolean>;
-    email: ko.Observable<string>;
+export interface User {
+    userName: string;
+    logged: boolean;
+    emailConfirmed: boolean;
+    email: string;
     id: any;
-    hasPassword: ko.Observable<boolean>;
+    hasPassword: boolean;
 }
 
 export const enum LoginStatusEnum {
-	Success,
-	LockedOut,
-	RequiresVerification
+	Success = 0,
+	LockedOut = 1,
+	RequiresVerification = 2
 }
 
 
@@ -71,17 +69,17 @@ export interface AccountController {
     setEmail: (params:{ model: SetEmailView }) => Promise<{}>;
     changePassword: (params: {view: ChangePasswordView}) => Promise<{}>;
     setPassword: (params: { model: SetPasswordView}) => Promise<{}>;
-    getMe: (params: {}) => Promise<UserViewModel>;
+    getMe: (params: {}) => Promise<User>;
     getUserRoles: (params:{})=> Promise<string[]>;
-    get: (params: { id: any}) => Promise<UserViewModel>;
-    search: (params: { filter: UserSearchFilter }) => Promise<UserViewModel[]>;
+    get: (params: { id: any}) => Promise<User>;
+    search: (params: { filter: UserSearchFilter }) => Promise<User[]>;
 }
 
 export interface AuthenticationController {
     forgotPassword: (params: { forgotPasswordView: ForgotPasswordView }) => Promise<{}>;
     getExternalAuthenticationProviders: (params: {}) => Promise<AuthenticationDescription[]>;
     login: (params: {loginView: LoginView}) => Promise<LoginResultView>;
-    register: (params: { registerView: RegisterView }) => Promise<UserViewModel>;
+    register: (params: { registerView: RegisterView }) => Promise<User>;
     logOff: (params: {}) => Promise<{}>;
     resetPassword: (params: { resetPasswordView: ResetPasswordView }) => Promise<{}>;
     confirmEmail: (params: { userId: any, code: string}) => Promise<{}>;
@@ -97,14 +95,14 @@ export interface RoleController {
 }
 
 export interface Factories {
-    createEmailView: () => SetEmailView;
-    createForgotPasswordView: () => ForgotPasswordView;
-    createLoginView: () => LoginView;
-    createSetPasswordView: () => SetPasswordView;
-    createChangePasswordView: () => ChangePasswordView;
-    createRegisterView: () => RegisterView;
-    createResetPasswordView: () => ResetPasswordView;
-    createUserSearchFilter: () => UserSearchFilter;
+    createSetEmailView: (data: { email: string }) => SetEmailView;
+    createForgotPasswordView: (data: { email: string }) => ForgotPasswordView;
+    createLoginView: (data: { email: string, password: string, rememberMe: boolean }) => LoginView;
+    createSetPasswordView: (data: { newPassword: string }) => SetPasswordView;
+    createChangePasswordView: (data: { oldPassword: string, newPassword: string, confirmPassword: string }) => ChangePasswordView;
+    createRegisterView: (data: { email: string, password: string }) => RegisterView;
+    createResetPasswordView: (data: { password: string }) => ResetPasswordView;
+    createUserSearchFilter: (data: { name?: string }) => UserSearchFilter;
 }
 
 export interface Services{
@@ -122,4 +120,5 @@ export function register(options: Services) {
     services.factories = options.factories;
     services.loading = options.loading;
     services.authentication = options.authentication;
+    services.role = options.role;
 }

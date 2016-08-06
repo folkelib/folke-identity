@@ -1,8 +1,8 @@
 import * as grid from "folke-ko-grid";
-import { UserSearchFilter, UserViewModel } from "./services";
+import { UserSearchFilter, User } from "./services";
 export default class IdentityUsersViewModel {
     filter: UserSearchFilter;
-    users: grid.Grid<UserViewModel, grid.SearchArrayParameters<UserSearchFilter>>;
+    users: grid.Grid<User, grid.SearchArrayParameters<UserSearchFilter>>;
     constructor();
-    goUser: (user: UserViewModel) => string;
+    goUser: (user: User) => string;
 }

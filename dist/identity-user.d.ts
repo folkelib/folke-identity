@@ -1,5 +1,5 @@
 import * as ko from "knockout";
-import { UserViewModel } from "./services";
+import { User } from "./services";
 export declare class RoleView {
     name: string;
     private userId;
@@ -8,7 +8,7 @@ export declare class RoleView {
     constructor(name: string, userId: string);
 }
 export default class ViewModel {
-    user: ko.Observable<UserViewModel>;
+    user: ko.Observable<User>;
     roles: ko.ObservableArray<RoleView>;
     constructor(params: any);
 }

@@ -1,20 +1,16 @@
-﻿import { services, UserViewModel } from './services';
+﻿import { services, User } from './services';
 import ko = require('knockout');
 import Folke from 'folke-core';
 
 export class Authentication {
-    public account = ko.observable<UserViewModel>();
+    public account = ko.observable<User>();
     public hideEmailConfirmBar = ko.observable(false);
     public roles = ko.observableArray<string>();
-
-    public constructor() {
-        this.updateMe();
-     }
 
     public rolesLoaded = ko.observable<boolean>(null);
     public accountLoaded = ko.pureComputed(() => this.account());
 
-    public logged = ko.computed(() => this.account() && this.account().logged());
+    public logged = ko.computed(() => this.account() && this.account().logged);
 
     public updateMe() {
         this.updateRoles();
@@ -29,7 +25,7 @@ export class Authentication {
     }
     
     public getLogged() {
-        return this.account.whenNotNull().then(account => account.logged());
+        return this.account.whenNotNull().then(account => account.logged);
     }
 
     public updateRoles() {

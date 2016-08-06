@@ -1,14 +1,14 @@
 import ko = require("knockout");
-import { services, RegisterView, UserViewModel } from './services';
+import { services, RegisterView, User } from './services';
 import * as Authentication from './authentication';
 import * as Folke from 'folke-core';
 import * as ServiceHelpers from "folke-ko-service-helpers"
 
 export default class IdentityRegisterViewModel {
-    form = services.factories.createRegisterView();
+    form = services.factories.createRegisterView({ email: "", password: "" });
     loading = services.loading;
 
-    constructor(public params: Folke.Parameters<UserViewModel>) {
+    constructor(public params: Folke.Parameters<User>) {
     }
 
     public login = () => Folke.default.showPopin('identity-login', this.params);

@@ -1,10 +1,10 @@
-import { ForgotPasswordView, UserViewModel } from './services';
+import { ForgotPasswordView, User } from './services';
 import * as Folke from 'folke-core';
 export default class IdentityForgotViewModel {
-    parameters: Folke.Parameters<UserViewModel>;
+    parameters: Folke.Parameters<User>;
     form: ForgotPasswordView;
-    constructor(parameters: Folke.Parameters<UserViewModel>);
+    constructor(parameters: Folke.Parameters<User>);
     dispose(): void;
     ask: () => void;
-    login: () => Promise<UserViewModel>;
+    login: () => Promise<User>;
 }

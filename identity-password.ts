@@ -4,8 +4,8 @@ import authentication = require('./authentication');
 import * as Folke from 'folke-core';
 
 export default class IdentityPasswordViewModel {
-    public formChange = services.factories.createChangePasswordView();
-    public formSet = services.factories.createSetPasswordView();
+    public formChange = services.factories.createChangePasswordView({ confirmPassword: "", newPassword: "", oldPassword: "" });
+    public formSet = services.factories.createSetPasswordView({ newPassword: "" });
     public hasPassword = authentication.default.account().hasPassword;
     public loading = services.loading;
 

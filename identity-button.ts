@@ -2,7 +2,7 @@
 import authentication from './authentication';
 import * as menu from 'folke-menu';
 import folke from 'folke-core';
-import { UserViewModel } from './services';
+import { User } from './services';
 
 export default class IdentityButtonViewModel {
     public logged = authentication.logged;
