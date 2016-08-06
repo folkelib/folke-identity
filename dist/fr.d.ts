@@ -11,4 +11,5 @@ export declare const fr: {
     notAmember: string;
     registerNow: string;
     or: string;
+    loginTitle: string;
 };

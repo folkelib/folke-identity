@@ -11,5 +11,6 @@ exports.fr = {
     connectFB: "Se connecter avec {0}",
     notAmember: "Pas encore membre ?",
     registerNow: "Inscrivez-vous !",
-    or: 'ou'
+    or: 'ou',
+    loginTitle: "Se connecter"
 };
