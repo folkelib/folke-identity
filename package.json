@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/folkelib/folke-identity#readme",
   "dependencies": {
-    "folke-core": "^1.0.7",
+    "folke-core": "^1.0.8",
     "folke-ko-grid": "^1.0.7",
-    "folke-ko-promise": "^1.0.1",
+    "folke-ko-promise": "^1.0.2",
     "folke-ko-service-helpers": "^1.0.4",
     "folke-menu": "^1.0.4"
   },

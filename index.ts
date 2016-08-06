@@ -4,6 +4,7 @@ import menu from 'folke-menu';
 import * as ko from 'knockout';
 import * as koPromise from 'folke-ko-promise';
 import { register as registerServices, Services } from './services';
+import * as localization from 'folke-ko-localization';
 
 import email from './identity-email';
 import forgot from './identity-forgot';
@@ -16,7 +17,8 @@ import user from './identity-user';
 import roles from './identity-roles';
 import button from './identity-button';
 
-export {fr} from './fr';
+export { fr } from './fr';
+export { Services } from './services'; 
 
 declare function require(id:string):string;
 
