@@ -18,7 +18,8 @@ import roles from './identity-roles';
 import button from './identity-button';
 
 export { fr } from './fr';
-export { Services } from './services'; 
+export { Services } from './services';
+export { default as authentication } from './authentication'; 
 
 declare function require(id:string):string;
 

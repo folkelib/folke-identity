@@ -2,6 +2,7 @@ import { Services } from './services';
 import register from './identity-register';
 export { fr } from './fr';
 export { Services } from './services';
+export { default as authentication } from './authentication';
 export declare function register(services: Services, role: string): void;
 export declare function registerBase(services: Services): void;
 export declare function registerAdministration(role: string): void;
