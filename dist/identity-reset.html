@@ -1,31 +1,31 @@
 <section class="identity-popin popin">
     <header class="popin-header">
         <popin-close-button></popin-close-button>
-        <div>Reset your password</div>
+        <div>{{identity.resetPassword}}</div>
     </header>
     <section>
         <form data-bind="submit: reset">
-            <header>{{accountForgot.enterCode}}</header>
+            <header>{{identity.enterCodeTitle}}</header>
             <fieldset class="container">
                 <fieldset class="large" data-bind="ifnot: form.userId">
-                    <label>Email</label>
+                    <label>{{identity.email}}</label>
                     <input type="text" data-bind="textInput: form.email" />
                 </fieldset>
                 <fieldset class="large">
-                    <label>Code</label>
+                    <label>{{identity.code}}</label>
                     <input type="text" data-bind="textInput: form.code" />
                 </fieldset>
                 <fieldset class="large">
-                    <label>Mot-de-passe</label>
+                    <label>{{identity.password}}</label>
                     <input type="password" data-bind="textInput: form.password" />
                 </fieldset>
                 <fieldset class="large">
-                    <label>Confirmez le mot-de-passe</label>
+                    <label>{{identity.confirmPassword}}</label>
                     <input type="password" data-bind="textInput: form.confirmPassword" />
                 </fieldset>
 
                 <footer>
-                    <button type="submit">Submit</button>
+                    <button type="submit">{{identity.validate}}</button>
                 </footer>
             </fieldset>
         </form>

@@ -1,20 +1,20 @@
 <section class="identity-popin popin">
     <header>
         <popin-close-button></popin-close-button>
-        <div>{{accountRegister.title}}</div>
+        <div>{{identity.createAccounttitle}}</div>
     </header>
     <section>
         <form data-bind="submit: register">
             <fieldset class="large">
-                <label>{{form.email}}</label>
+                <label>{{identity.email}}</label>
                 <input type="text" data-bind="textInput: form.email, validate: form.email"/>
             </fieldset>
             <fieldset class="large">
-                <label>{{form.password}}</label>
+                <label>{{identity.password}}</label>
                 <input type="password" data-bind="textInput: form.password, validate: form.password"/>
             </fieldset>
             <fieldset class="large">
-                <label>{{accountRegister.confirmPassword}}</label>
+                <label>{{identity.confirmPassword}}</label>
                 <input type="password" data-bind="textInput: form.confirmPassword, validate: form.confirmPassword"/>
             </fieldset>
 
@@ -26,12 +26,11 @@
 
     <hr />
     <div class="separator">{{identity.or}}</div>
-
     <section class="social">
-        <button class="button fit" data-bind="click: facebookLogin"><span class="fa fa-facebook"></span> {{accountRegister.signupFB}}</button>
+        <button class="button fit" data-bind="click: facebookLogin"><span class="fa fa-facebook"></span> {{identity.signupSocial}}</button>
     </section>
 
     <footer>
-        {{accountRegister.alreadyMember}} <a href="" data-bind="click: login">{{accountRegister.signin}}</a>
+        {{identity.alreadyMember}} <a href="" data-bind="click: login">{{identity.loginButton}}</a>
     </footer>
 </section>

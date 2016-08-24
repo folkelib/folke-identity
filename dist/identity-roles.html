@@ -1,12 +1,12 @@
 ﻿<table class="grid">
     <thead><tr>
-        <th>Nom</th>
+        <th>{{identity.nameTitle}}</th>
     </tr></thead>
     <tbody data-bind="foreach: roles">
     <tr>
         <td data-bind="text: name"></td>
         <td>
-            <button class="button" data-bind="click: $parent.remove">Supprimer</button>
+            <button class="button" data-bind="click: $parent.remove">{{identity.delete}}</button>
         </td>
     </tr>
     </tbody>
@@ -15,10 +15,10 @@
 <!-- ko if: isEdit -->
 <form data-bind="submit: save">
     <input type="text" data-bind="textInput: name"/>
-    <button class="button" type="submit">Ajouter</button>
+    <button class="button" type="submit">{{identity.add}}</button>
 </form>
 <!-- /ko -->
 
 <!-- ko ifnot: isEdit -->
-<button class="button" data-bind="click: add">Nouveau</button>
+<button class="button" data-bind="click: add">{{identity.new}}</button>
 <!-- /ko -->
