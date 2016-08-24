@@ -25,5 +25,5 @@ exports.fr = {
     registerNow: "Inscription",
     rememberMe: "Se souvenir de moi",
     resetPassword: 'Réinitialiser le mot de passe',
-    validate: 'Valider'    
+    validate: 'Valider'   
 };
