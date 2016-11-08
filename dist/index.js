@@ -18,6 +18,8 @@ var fr_1 = require('./fr');
 exports.fr = fr_1.fr;
 var authentication_2 = require('./authentication');
 exports.authentication = authentication_2.default;
+var identity_login_2 = require('./identity-login');
+exports.IdentityLoginViewModel = identity_login_2.default;
 function registerComponent(name, viewModel) {
     ko.components.register(name, {
         template: require("./" + name + ".html"),

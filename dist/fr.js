@@ -7,8 +7,8 @@ exports.fr = {
     currentPassword: 'Mot de passe actuel',
     code: 'Code',
     signupSocial: "Se connecter avec {0}",
-    confirmPassword: 'Confirmation du mot de passe',  
-    delete: 'Supprimer',  
+    confirmPassword: 'Confirmation du mot de passe',
+    delete: 'Supprimer',
     edit: 'Modifier',
     editEmail: "Modifier l'adresse e-mail",
     email: 'E-mail',
@@ -25,5 +25,5 @@ exports.fr = {
     registerNow: "Inscription",
     rememberMe: "Se souvenir de moi",
     resetPassword: 'Réinitialiser le mot de passe',
-    validate: 'Valider'   
+    validate: 'Valider'
 };
