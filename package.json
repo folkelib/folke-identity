@@ -1,6 +1,6 @@
 {
   "name": "folke-identity",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Works in pair with Folke.Identity.Server",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
