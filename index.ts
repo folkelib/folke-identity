@@ -19,11 +19,12 @@ import button from './identity-button';
 
 export { fr } from './fr';
 export { Services } from './services';
-export { default as authentication } from './authentication'; 
+export { default as authentication } from './authentication';
+export { default as IdentityLoginViewModel } from './identity-login';
 
-declare function require(id:string):string;
+declare function require(id: string): string;
 
-function registerComponent<T>(name:string, viewModel: T){
+function registerComponent<T>(name: string, viewModel: T) {
     ko.components.register(name, {
         template: require(`./${name}.html`),
         viewModel: viewModel
