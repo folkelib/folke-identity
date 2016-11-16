@@ -20,7 +20,16 @@ import button from './identity-button';
 export { fr } from './fr';
 export { Services } from './services';
 export { default as authentication } from './authentication';
+export { default as ConfirmViewModel } from './identity-confirm';
 export { default as IdentityLoginViewModel } from './identity-login';
+export { default as IdentityEmailViewModel } from './identity-email';
+export { default as IdentityPasswordViewModel } from './identity-password';
+export { default as IdentityRegisterViewModel } from './identity-register';
+export { default as IdentityResetViewModel } from './identity-reset';
+export { default as IdentityRolesViewModel } from './identity-roles';
+export { default as RoleView } from './identity-user';
+export { default as IdentityUsersViewModel } from './identity-users';
+
 
 declare function require(id: string): string;
 
