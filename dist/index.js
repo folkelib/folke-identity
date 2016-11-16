@@ -18,8 +18,24 @@ var fr_1 = require('./fr');
 exports.fr = fr_1.fr;
 var authentication_2 = require('./authentication');
 exports.authentication = authentication_2.default;
+var identity_confirm_1 = require('./identity-confirm');
+exports.ConfirmViewModel = identity_confirm_1.default;
 var identity_login_2 = require('./identity-login');
 exports.IdentityLoginViewModel = identity_login_2.default;
+var identity_email_2 = require('./identity-email');
+exports.IdentityEmailViewModel = identity_email_2.default;
+var identity_password_2 = require('./identity-password');
+exports.IdentityPasswordViewModel = identity_password_2.default;
+var identity_register_2 = require('./identity-register');
+exports.IdentityRegisterViewModel = identity_register_2.default;
+var identity_reset_2 = require('./identity-reset');
+exports.IdentityResetViewModel = identity_reset_2.default;
+var identity_roles_2 = require('./identity-roles');
+exports.IdentityRolesViewModel = identity_roles_2.default;
+var identity_user_2 = require('./identity-user');
+exports.RoleView = identity_user_2.default;
+var identity_users_2 = require('./identity-users');
+exports.IdentityUsersViewModel = identity_users_2.default;
 function registerComponent(name, viewModel) {
     ko.components.register(name, {
         template: require("./" + name + ".html"),
