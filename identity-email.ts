@@ -14,5 +14,5 @@ export default class IdentityEmailViewModel {
     public dispose() {
     }
 
-    public submit = () => services.account.setEmail({ model: this.form }).then(() => this.params.resolve());
+    public submit = () => services.account.setEmail({ model: this.form }).then(() => this.params.resolve && this.params.resolve());
 }

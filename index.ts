@@ -10,7 +10,7 @@ import email from './identity-email';
 import forgot from './identity-forgot';
 import password from './identity-password';
 import login from './identity-login';
-import register from './identity-register';
+import identityRegister from './identity-register';
 import reset from './identity-reset';
 import users from './identity-users';
 import user from './identity-user';
@@ -55,7 +55,7 @@ export function registerBase(services: Services) {
     registerComponent('identity-forgot', forgot);
     registerComponent('identity-password', password);
     registerComponent('identity-login', login);
-    registerComponent('identity-register', register);
+    registerComponent('identity-register', identityRegister);
     registerComponent('identity-reset', reset);
 }
 

@@ -1,14 +1,16 @@
-import * as ko from "knockout";
+/// <reference types="knockout" />
 import { User } from "./services";
 export declare class RoleView {
     name: string;
     private userId;
-    enabled: ko.Observable<boolean>;
-    checked: ko.PureComputed<boolean>;
+    enabled: KnockoutObservable<boolean>;
+    checked: KnockoutComputed<boolean>;
     constructor(name: string, userId: string);
 }
 export default class ViewModel {
-    user: ko.Observable<User>;
-    roles: ko.ObservableArray<RoleView>;
-    constructor(params: any);
+    user: KnockoutObservable<User>;
+    roles: KnockoutObservableArray<RoleView>;
+    constructor(params: {
+        id: string;
+    });
 }

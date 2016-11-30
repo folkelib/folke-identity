@@ -15,6 +15,6 @@ export default class IdentityPasswordViewModel {
     public dispose() {
     }
 
-    public submitChange = () => services.account.changePassword({ view: this.formChange }).then(() => this.params.resolve());
-    public submitSet = () => services.account.setPassword({ model: this.formSet }).then(() => this.params.resolve());
+    public submitChange = () => services.account.changePassword({ view: this.formChange }).then(() => this.params.resolve && this.params.resolve());
+    public submitSet = () => services.account.setPassword({ model: this.formSet }).then(() => this.params.resolve && this.params.resolve());
 }

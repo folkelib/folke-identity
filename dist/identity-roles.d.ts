@@ -1,11 +1,11 @@
-import * as ko from "knockout";
+/// <reference types="knockout" />
 import { RoleView } from "./services";
 export default class IdentityRolesViewModel {
-    roles: ko.ObservableArray<RoleView>;
-    name: ko.Observable<string>;
-    isEdit: ko.Observable<boolean>;
+    roles: KnockoutObservableArray<RoleView>;
+    name: KnockoutObservable<string>;
+    isEdit: KnockoutObservable<boolean>;
     constructor(params: any);
     remove: (role: RoleView) => Promise<{}>;
     save: () => void;
-    add: () => ko.Observable<boolean>;
+    add: () => void;
 }

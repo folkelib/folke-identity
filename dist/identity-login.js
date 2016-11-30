@@ -1,8 +1,8 @@
 "use strict";
 var ko = require("knockout");
-var services_1 = require('./services');
-var authentication = require('./authentication');
-var Folke = require('folke-core');
+var services_1 = require("./services");
+var authentication = require("./authentication");
+var Folke = require("folke-core");
 var ServiceHelpers = require("folke-ko-service-helpers");
 var IdentityLoginViewModel = (function () {
     function IdentityLoginViewModel(parameters) {
@@ -14,7 +14,7 @@ var IdentityLoginViewModel = (function () {
         this.login = function () {
             services_1.services.authentication.login({ loginView: _this.form }).then(function (loginResult) {
                 if (loginResult.status === 0 /* Success */) {
-                    authentication.default.updateMe().then(function () { return _this.parameters.resolve(); });
+                    authentication.default.updateMe().then(function () { return _this.parameters.resolve && _this.parameters.resolve(); });
                 }
             });
         };

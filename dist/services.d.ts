@@ -1,6 +1,6 @@
-import * as ko from 'knockout';
+/// <reference types="knockout" />
 export interface SetEmailView {
-    email: ko.Observable<string>;
+    email: KnockoutObservable<string>;
     isValid: () => boolean;
     changed: () => boolean;
 }
@@ -19,8 +19,8 @@ export interface LoginResultView {
 export interface RegisterView {
 }
 export interface ResetPasswordView {
-    userId: ko.Observable<any>;
-    code: ko.Observable<string>;
+    userId: KnockoutObservable<any>;
+    code: KnockoutObservable<string>;
 }
 export interface RoleView {
     name: string;
@@ -43,7 +43,7 @@ export declare const enum LoginStatusEnum {
     LockedOut = 1,
     RequiresVerification = 2,
 }
-export declare let loading: ko.Observable<boolean>;
+export declare let loading: KnockoutObservable<boolean>;
 export interface AccountController {
     setEmail: (params: {
         model: SetEmailView;

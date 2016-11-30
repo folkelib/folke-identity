@@ -1,0 +1,28 @@
+export declare const fr: {
+    add: string;
+    alreadyMember: string;
+    changePassword: string;
+    createAccountTitle: string;
+    currentPassword: string;
+    code: string;
+    signupSocial: string;
+    confirmPassword: string;
+    delete: string;
+    edit: string;
+    editEmail: string;
+    email: string;
+    enterCodeTitle: string;
+    forgotPassword: string;
+    loginButton: string;
+    loginTitle: string;
+    nameTitle: string;
+    new: string;
+    newPassword: string;
+    notAmember: string;
+    or: string;
+    password: string;
+    registerNow: string;
+    rememberMe: string;
+    resetPassword: string;
+    validate: string;
+};

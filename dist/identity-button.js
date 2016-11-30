@@ -1,6 +1,6 @@
 "use strict";
-var authentication_1 = require('./authentication');
-var folke_core_1 = require('folke-core');
+var authentication_1 = require("./authentication");
+var folke_core_1 = require("folke-core");
 var IdentityButtonViewModel = (function () {
     function IdentityButtonViewModel(menu) {
         var _this = this;

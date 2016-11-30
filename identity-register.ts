@@ -18,7 +18,7 @@ export default class IdentityRegisterViewModel {
             Authentication.default.hideEmailConfirmBar(true);
             Authentication.default.account(view);
             return view;
-        }).then(view => this.params.resolve(view));
+        }).then(view => this.params.resolve && this.params.resolve(view));
     }
 
     public dispose() {

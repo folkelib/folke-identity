@@ -1,11 +1,11 @@
-import * as ko from 'knockout';
+/// <reference types="knockout" />
 import * as menu from 'folke-menu';
 import { User } from './services';
 export default class IdentityButtonViewModel {
     menu: menu.SubMenu;
-    logged: ko.Computed<boolean>;
-    account: ko.Observable<User>;
+    logged: KnockoutComputed<boolean>;
+    account: KnockoutObservable<User>;
     constructor(menu: menu.SubMenu);
-    login: () => Promise<void>;
-    toggle: () => ko.Observable<boolean>;
+    login: () => PromiseLike<void>;
+    toggle: () => void;
 }

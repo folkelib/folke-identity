@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "typings install && tsc -p .",
+    "prepublish": "tsc -p .",
     "watch": "tsc -watch"
   },
   "repository": {
@@ -20,14 +20,16 @@
   },
   "homepage": "https://github.com/folkelib/folke-identity#readme",
   "dependencies": {
-    "folke-core": "^1.0.8",
-    "folke-ko-grid": "^1.0.7",
-    "folke-ko-promise": "^1.0.2",
-    "folke-ko-service-helpers": "^1.0.4",
-    "folke-menu": "^1.0.4"
+    "@types/knockout": "~3.4.37",
+    "@types/whatwg-fetch": "0.0.32",
+    "folke-core": "^1.1",
+    "folke-ko-grid": "^1.1",
+    "folke-ko-promise": "^1.1",
+    "folke-ko-service-helpers": "^1.1",
+    "folke-ko-localization": "^1.1.1",
+    "folke-menu": "^1.1"
   },
   "devDependencies": {
-    "typescript": "^1.8.10",
-    "typings": "^1.3.2"
+    "typescript": "^2.1"
   }
 }

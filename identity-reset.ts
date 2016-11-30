@@ -20,5 +20,5 @@ export default class IdentityResetViewModel {
     public dispose() {
     }
 
-    public reset = () => services.authentication.resetPassword({ resetPasswordView: this.form }).then(() => this.params.resolve());
+    public reset = () => services.authentication.resetPassword({ resetPasswordView: this.form }).then(() => this.params.resolve && this.params.resolve());
 }

@@ -6,7 +6,7 @@ export class RoleView {
     enabled = ko.observable(false);
     checked = ko.pureComputed({
         read: () => this.enabled(),
-        write: value => {
+        write: (value:boolean) => {
             this.enabled(value);
             if (value) {
                 services.role.addUser({ userId: this.userId, roleName: this.name });
@@ -22,7 +22,7 @@ export default class ViewModel {
     public user = ko.observable<User>();
     public roles = ko.observableArray<RoleView>();
     
-    constructor(params) {
+    constructor(params: { id: string }) {
         var userId = params['id'];
         services.account.get({ id: userId }).then(user => this.user(user));
         services.role.getAll({}).then(allRoles => this.roles(allRoles.map(x => new RoleView(x.name, userId)))).then(() => {

@@ -1,20 +1,20 @@
+/// <reference types="knockout" />
 import { User } from './services';
-import ko = require('knockout');
 export declare class Authentication {
-    account: ko.Observable<User>;
-    hideEmailConfirmBar: ko.Observable<boolean>;
-    roles: ko.ObservableArray<string>;
-    rolesLoaded: ko.Observable<boolean>;
-    accountLoaded: ko.PureComputed<User>;
-    logged: ko.Computed<boolean>;
+    account: KnockoutObservable<User>;
+    hideEmailConfirmBar: KnockoutObservable<boolean>;
+    roles: KnockoutObservableArray<string>;
+    rolesLoaded: KnockoutObservable<boolean>;
+    accountLoaded: KnockoutComputed<User>;
+    logged: KnockoutComputed<boolean>;
     updateMe(): Promise<User>;
-    logout: () => Promise<User>;
+    logout: () => Promise<{}>;
     getLogged(): Promise<boolean>;
     updateRoles(): Promise<string[]>;
-    roleObservable(roleName: string): ko.PureComputed<boolean>;
+    roleObservable(roleName: string): KnockoutComputed<boolean>;
     hasRole(roleName: string): boolean;
     whenHasRole(roleName: string): Promise<boolean>;
-    whenLogged(): Promise<User>;
+    whenLogged(): Promise<boolean>;
     addLoggedRoute(route: string, viewId: string): void;
     addRoleRoute(route: string, role: string, viewId: string): void;
     message(message: string): void;

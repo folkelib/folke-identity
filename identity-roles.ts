@@ -6,7 +6,7 @@ export default class IdentityRolesViewModel {
     public name = ko.observable('');
     public isEdit = ko.observable(false);
 
-    constructor(params) {
+    constructor(params: any) {
         services.role.getAll({}).then(roles => this.roles(roles));
     }
 

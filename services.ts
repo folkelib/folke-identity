@@ -1,7 +1,7 @@
 import * as ko from 'knockout';
 
 export interface SetEmailView {
-    email: ko.Observable<string>;
+    email: KnockoutObservable<string>;
     isValid: () => boolean;
     changed: () => boolean;
 }
@@ -30,8 +30,8 @@ export interface RegisterView {
 }
 
 export interface ResetPasswordView {
-    userId: ko.Observable<any>;
-    code: ko.Observable<string>;
+    userId: KnockoutObservable<any>;
+    code: KnockoutObservable<string>;
 }
 
 export interface RoleView {
@@ -63,7 +63,7 @@ export const enum LoginStatusEnum {
 }
 
 
-export let loading:ko.Observable<boolean>;
+export let loading:KnockoutObservable<boolean>;
 
 export interface AccountController {
     setEmail: (params:{ model: SetEmailView }) => Promise<{}>;
@@ -105,7 +105,7 @@ export interface Factories {
     createUserSearchFilter: (data: { name?: string }) => UserSearchFilter;
 }
 
-export interface Services{
+export interface Services {
     factories: Factories;
     account: AccountController;
     authentication: AuthenticationController;
@@ -113,7 +113,7 @@ export interface Services{
     loading: () => boolean;
 } 
 
-export const services: Services = { factories: null, account: null, loading: null, authentication: null, role: null };
+export const services: Services = <Services>{ };
 
 export function register(options: Services) {
     services.account = options.account;

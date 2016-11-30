@@ -1,7 +1,7 @@
 "use strict";
-var services_1 = require('./services');
-var Authentication = require('./authentication');
-var Folke = require('folke-core');
+var services_1 = require("./services");
+var Authentication = require("./authentication");
+var Folke = require("folke-core");
 var ServiceHelpers = require("folke-ko-service-helpers");
 var IdentityRegisterViewModel = (function () {
     function IdentityRegisterViewModel(params) {
@@ -15,7 +15,7 @@ var IdentityRegisterViewModel = (function () {
                 Authentication.default.hideEmailConfirmBar(true);
                 Authentication.default.account(view);
                 return view;
-            }).then(function (view) { return _this.params.resolve(view); });
+            }).then(function (view) { return _this.params.resolve && _this.params.resolve(view); });
         };
         this.facebookLogin = function () {
             window.open('/api/authentication/external-login' + ServiceHelpers.getQueryString({ provider: 'Facebook', returnUrl: window.location.toString() }), 'oauth', 'dialog');

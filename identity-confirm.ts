@@ -9,8 +9,8 @@ export default class ConfirmViewModel {
         var code: string = params['code*'];
         services.authentication.confirmEmail({ userId: accountId, code: code }).then(() => {
             Authentication.default.account().emailConfirmed = true;
-            params.resolve();
-        }, error => params.reject(error));
+            params.resolve && params.resolve();
+        }, error => params.reject && params.reject(error));
     }
     
     public dispose() { }

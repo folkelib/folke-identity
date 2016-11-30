@@ -16,7 +16,7 @@ export default class IdentityLoginViewModel {
     public login = () => {
         services.authentication.login({ loginView: this.form }).then(loginResult => {
             if (loginResult.status === LoginStatusEnum.Success) {
-                authentication.default.updateMe().then(() => this.parameters.resolve());
+                authentication.default.updateMe().then(() => this.parameters.resolve && this.parameters.resolve());
             }            
         });
     }

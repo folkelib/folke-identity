@@ -1,6 +1,6 @@
 "use strict";
-var services_1 = require('./services');
-var Folke = require('folke-core');
+var services_1 = require("./services");
+var Folke = require("folke-core");
 var IdentityForgotViewModel = (function () {
     function IdentityForgotViewModel(parameters) {
         var _this = this;

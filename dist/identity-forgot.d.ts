@@ -6,5 +6,5 @@ export default class IdentityForgotViewModel {
     constructor(parameters: Folke.Parameters<User>);
     dispose(): void;
     ask: () => void;
-    login: () => Promise<User>;
+    login: () => PromiseLike<User>;
 }

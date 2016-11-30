@@ -5,7 +5,7 @@ export default class IdentityRegisterViewModel {
     form: RegisterView;
     loading: () => boolean;
     constructor(params: Folke.Parameters<User>);
-    login: () => Promise<User>;
+    login: () => PromiseLike<User>;
     register: () => void;
     dispose(): void;
     facebookLogin: () => void;

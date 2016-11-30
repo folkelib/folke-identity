@@ -1,7 +1,7 @@
 "use strict";
-var services_1 = require('./services');
-var ko = require('knockout');
-var folke_core_1 = require('folke-core');
+var services_1 = require("./services");
+var ko = require("knockout");
+var folke_core_1 = require("folke-core");
 var Authentication = (function () {
     function Authentication() {
         var _this = this;

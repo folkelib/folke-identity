@@ -1,5 +1,4 @@
 import { Services } from './services';
-import register from './identity-register';
 export { fr } from './fr';
 export { Services } from './services';
 export { default as authentication } from './authentication';
