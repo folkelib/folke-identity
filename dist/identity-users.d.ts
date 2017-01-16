@@ -1,8 +1,14 @@
+/// <reference types="knockout" />
 import * as grid from "folke-ko-grid";
-import { UserSearchFilter, User } from "./services";
-export default class IdentityUsersViewModel {
-    filter: UserSearchFilter;
-    users: grid.Grid<User, grid.SearchArrayParameters<UserSearchFilter>>;
+import { User } from "./services";
+export default class IdentityUsersViewModel<TKey> {
+    private services;
+    name: KnockoutObservable<string>;
+    users: grid.Grid<User<TKey>, {
+        limit: number;
+        offset: number;
+        sortColumn: string;
+    }>;
     constructor();
-    goUser: (user: User) => string;
+    goUser: (user: User<TKey>) => string;
 }

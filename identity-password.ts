@@ -1,13 +1,16 @@
 import ko = require("knockout");
-import { services, ChangePasswordView, SetPasswordView } from './services';
+import { get, ChangePasswordView, SetPasswordView } from './services';
 import authentication = require('./authentication');
 import * as Folke from 'folke-core';
+import { ValidableObservable, validableObservable, isEmail, isRequired, areSame } from "folke-ko-validation";
 
 export default class IdentityPasswordViewModel {
-    public formChange = services.factories.createChangePasswordView({ confirmPassword: "", newPassword: "", oldPassword: "" });
-    public formSet = services.factories.createSetPasswordView({ newPassword: "" });
-    public hasPassword = authentication.default.account().hasPassword;
-    public loading = services.loading;
+    private services = get();
+    public oldPassword = validableObservable("").addValidator(isRequired);
+    public newPassword = validableObservable("").addValidator(isRequired);
+    public confirmPassword = validableObservable("").addValidator(areSame(this.newPassword));
+    public hasPassword = ko.pureComputed(() => authentication.default.account().hasPassword);
+    public loading = this.services.loading;
 
     constructor (public params: Folke.Parameters<any>) {
     }
@@ -15,6 +18,8 @@ export default class IdentityPasswordViewModel {
     public dispose() {
     }
 
-    public submitChange = () => services.account.changePassword({ view: this.formChange }).then(() => this.params.resolve && this.params.resolve());
-    public submitSet = () => services.account.setPassword({ model: this.formSet }).then(() => this.params.resolve && this.params.resolve());
+    public submitChange = () => this.services.account.changePassword({ view: { confirmPassword: this.confirmPassword(), newPassword: this.newPassword(), oldPassword: this.oldPassword() } }).then(() => this.params.resolve && this.params.resolve());
+    public submitSet = () => this.services.account.setPassword({ model: { newPassword: this.newPassword() } }).then(() => this.params.resolve && this.params.resolve());
+
+    public isValid = ko.pureComputed(() => (this.hasPassword() || this.oldPassword.valid()) && this.newPassword.valid() && this.confirmPassword.valid());
 }

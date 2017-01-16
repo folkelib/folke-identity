@@ -40,7 +40,7 @@ function registerComponent<T>(name: string, viewModel: T) {
     })
 }
 
-export function register(services: Services, role: string) {
+export function register<TKey>(services: Services<TKey>, role: string) {
     registerBase(services);
     authentication.updateMe();
     registerAdministration(role);
@@ -48,7 +48,7 @@ export function register(services: Services, role: string) {
     registerAdministrationMenu(role);
 }
 
-export function registerBase(services: Services) {
+export function registerBase<TKey>(services: Services<TKey>) {
     registerServices(services);
     koPromise.register();
     registerComponent('identity-email', email);

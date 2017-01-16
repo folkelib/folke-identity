@@ -27,6 +27,7 @@
     "folke-ko-promise": "^1.1",
     "folke-ko-service-helpers": "^1.1",
     "folke-ko-localization": "^1.1.1",
+    "folke-ko-validation":"^1.1",
     "folke-menu": "^1.1"
   },
   "devDependencies": {

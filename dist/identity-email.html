@@ -8,10 +8,10 @@
         <form data-bind="submit: submit">
             <fieldset class="large">
                 <label>{{identity.email}}</label>
-                <input type="text" data-bind="textInput: form.email, validate: form.email"/>
+                <input type="text" data-bind="textInput: email, validate: email"/>
             </fieldset>
             <fieldset>
-                <button class="button fit" type="submit" data-bind="enable: form.isValid() && !loading() && form.changed()">{{identity.edit}}</button>
+                <button class="button fit" type="submit" data-bind="enable: isValid">{{identity.edit}}</button>
             </fieldset>
         </form>
     </section>

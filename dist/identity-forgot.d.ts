@@ -1,10 +1,14 @@
-import { ForgotPasswordView, User } from './services';
+/// <reference types="knockout" />
+import { User } from './services';
 import * as Folke from 'folke-core';
-export default class IdentityForgotViewModel {
-    parameters: Folke.Parameters<User>;
-    form: ForgotPasswordView;
-    constructor(parameters: Folke.Parameters<User>);
+import { ValidableObservable } from "folke-ko-validation";
+export default class IdentityForgotViewModel<TKey> {
+    parameters: Folke.Parameters<User<TKey>>;
+    private services;
+    email: ValidableObservable<string>;
+    constructor(parameters: Folke.Parameters<User<TKey>>);
     dispose(): void;
     ask: () => void;
-    login: () => PromiseLike<User>;
+    login: () => PromiseLike<User<TKey>>;
+    isValid: KnockoutComputed<boolean>;
 }

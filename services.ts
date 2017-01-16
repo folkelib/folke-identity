@@ -1,13 +1,11 @@
 import * as ko from 'knockout';
 
 export interface SetEmailView {
-    email: KnockoutObservable<string>;
-    isValid: () => boolean;
-    changed: () => boolean;
+    email: string;
 }
 
 export interface ForgotPasswordView {
-
+    email: string;
 }
 
 export interface AuthenticationDescription {
@@ -15,10 +13,15 @@ export interface AuthenticationDescription {
 }
 
 export interface ChangePasswordView {
-
+    confirmPassword: string;
+    newPassword: string;
+    oldPassword: string;
 }
 
 export interface LoginView {
+    email: string;
+    password: string;
+    rememberMe: boolean;
 }
 
 export interface LoginResultView {
@@ -26,33 +29,37 @@ export interface LoginResultView {
 }
 
 export interface RegisterView {
-
+    email: string;
+    password: string;
+    confirmPassword: string;
 }
 
 export interface ResetPasswordView {
-    userId: KnockoutObservable<any>;
-    code: KnockoutObservable<string>;
+    userId: string;
+    code:string;
+    password: string;
+    confirmPassword: string;
 }
 
-export interface RoleView {
+export interface RoleView<TKey> {
     name: string;
-    id: any;
+    id: TKey;
 }
 
 export interface SetPasswordView {
-
+    newPassword:string;
 }
 
 export interface UserSearchFilter {
-
+    name: string;
 }
 
-export interface User {
+export interface User<TKey> {
     userName: string;
     logged: boolean;
     emailConfirmed: boolean;
     email: string;
-    id: any;
+    id: TKey;
     hasPassword: boolean;
 }
 
@@ -62,63 +69,53 @@ export const enum LoginStatusEnum {
 	RequiresVerification = 2
 }
 
-
 export let loading:KnockoutObservable<boolean>;
 
-export interface AccountController {
+export interface AccountController<TKey> {
     setEmail: (params:{ model: SetEmailView }) => Promise<{}>;
     changePassword: (params: {view: ChangePasswordView}) => Promise<{}>;
     setPassword: (params: { model: SetPasswordView}) => Promise<{}>;
-    getMe: (params: {}) => Promise<User>;
+    getMe: (params: {}) => Promise<User<TKey>>;
     getUserRoles: (params:{})=> Promise<string[]>;
-    get: (params: { id: any}) => Promise<User>;
-    search: (params: { filter: UserSearchFilter }) => Promise<User[]>;
+    get: (params: { id: any}) => Promise<User<TKey>>;
+    search: (params: { offset: number, limit: number, sortColumn: string, filter: UserSearchFilter }) => Promise<User<TKey>[]>;
 }
 
-export interface AuthenticationController {
+export interface AuthenticationController<TKey> {
     forgotPassword: (params: { forgotPasswordView: ForgotPasswordView }) => Promise<{}>;
     getExternalAuthenticationProviders: (params: {}) => Promise<AuthenticationDescription[]>;
     login: (params: {loginView: LoginView}) => Promise<LoginResultView>;
-    register: (params: { registerView: RegisterView }) => Promise<User>;
+    register: (params: { registerView: RegisterView }) => Promise<User<TKey>>;
     logOff: (params: {}) => Promise<{}>;
     resetPassword: (params: { resetPasswordView: ResetPasswordView }) => Promise<{}>;
     confirmEmail: (params: { userId: any, code: string}) => Promise<{}>;
 }
 
-export interface RoleController {
-    create: (params:{name: string}) => Promise<RoleView>;
-    getAll: (params:{}) => Promise<RoleView[]>;
+export interface RoleController<TKey> {
+    create: (params:{name: string}) => Promise<RoleView<TKey>>;
+    getAll: (params:{}) => Promise<RoleView<TKey>[]>;
     delete: (params: {id: any}) => Promise<{}>;
     addUser: (params: { userId: any, roleName: string }) => Promise<{}>;
     deleteUser: (params: { userId: any, roleName: string}) => Promise<{}>;
     getForUser: (params: { userId: any }) => Promise<string[]>;
 }
 
-export interface Factories {
-    createSetEmailView: (data: { email: string }) => SetEmailView;
-    createForgotPasswordView: (data: { email: string }) => ForgotPasswordView;
-    createLoginView: (data: { email: string, password: string, rememberMe: boolean }) => LoginView;
-    createSetPasswordView: (data: { newPassword: string }) => SetPasswordView;
-    createChangePasswordView: (data: { oldPassword: string, newPassword: string, confirmPassword: string }) => ChangePasswordView;
-    createRegisterView: (data: { email: string, password: string }) => RegisterView;
-    createResetPasswordView: (data: { password: string }) => ResetPasswordView;
-    createUserSearchFilter: (data: { name?: string }) => UserSearchFilter;
-}
-
-export interface Services {
-    factories: Factories;
-    account: AccountController;
-    authentication: AuthenticationController;
-    role: RoleController;
+export interface Services<TKey> {
+    account: AccountController<TKey>;
+    authentication: AuthenticationController<TKey>;
+    role: RoleController<TKey>;
     loading: () => boolean;
 } 
 
-export const services: Services = <Services>{ };
+let services:Services<any> | null = null;
 
-export function register(options: Services) {
-    services.account = options.account;
-    services.factories = options.factories;
-    services.loading = options.loading;
-    services.authentication = options.authentication;
-    services.role = options.role;
+export function get<TKey>():Services<TKey> {
+    if (services === null) {
+        throw new Error("register not called");
+    }
+    return services;
+}
+
+export function register<TKey>(options: Services<TKey>) {
+    services = options;
 }

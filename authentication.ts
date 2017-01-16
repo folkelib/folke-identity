@@ -1,9 +1,10 @@
-﻿import { services, User } from './services';
+﻿import { get as getServices, User } from './services';
 import ko = require('knockout');
 import Folke from 'folke-core';
 
-export class Authentication {
-    public account = ko.observable<User>();
+export class Authentication<TKey> {
+    private services = getServices<TKey>();
+    public account = ko.observable<User<TKey>>();
     public hideEmailConfirmBar = ko.observable(false);
     public roles = ko.observableArray<string>();
 
@@ -14,14 +15,14 @@ export class Authentication {
 
     public updateMe() {
         this.updateRoles();
-        return services.account.getMe({}).then(account => {
+        return this.services.account.getMe({}).then(account => {
             this.account(account);
             return account;
         });
     }
 
     public logout = () => {
-        return services.authentication.logOff({}).then(() => this.updateMe());
+        return this.services.authentication.logOff({}).then(() => this.updateMe());
     }
     
     public getLogged() {
@@ -30,7 +31,7 @@ export class Authentication {
 
     public updateRoles() {
         this.rolesLoaded(null);
-        return services.account.getUserRoles({}).then(roles => {
+        return this.services.account.getUserRoles({}).then(roles => {
             this.roles(roles);
             this.rolesLoaded(true);
             return roles;

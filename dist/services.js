@@ -1,10 +1,13 @@
 "use strict";
-exports.services = {};
+var services = null;
+function get() {
+    if (services === null) {
+        throw new Error("register not called");
+    }
+    return services;
+}
+exports.get = get;
 function register(options) {
-    exports.services.account = options.account;
-    exports.services.factories = options.factories;
-    exports.services.loading = options.loading;
-    exports.services.authentication = options.authentication;
-    exports.services.role = options.role;
+    services = options;
 }
 exports.register = register;

@@ -7,19 +7,19 @@
         <form data-bind="submit: register">
             <fieldset class="large">
                 <label>{{identity.email}}</label>
-                <input type="text" data-bind="textInput: form.email, validate: form.email"/>
+                <input type="text" data-bind="textInput: email, validate: email"/>
             </fieldset>
             <fieldset class="large">
                 <label>{{identity.password}}</label>
-                <input type="password" data-bind="textInput: form.password, validate: form.password"/>
+                <input type="password" data-bind="textInput: password, validate: password"/>
             </fieldset>
             <fieldset class="large">
                 <label>{{identity.confirmPassword}}</label>
-                <input type="password" data-bind="textInput: form.confirmPassword, validate: form.confirmPassword"/>
+                <input type="password" data-bind="textInput: confirmPassword, validate: confirmPassword"/>
             </fieldset>
 
             <div>
-                <button type="submit" class="fit button" data-bind="enable: form.isValid() && !loading()">{{accountRegister.signupButton}}</button>
+                <button type="submit" class="fit button" data-bind="enable: isValid">{{accountRegister.signupButton}}</button>
             </div>
         </form>
     </section>
