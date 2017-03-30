@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ko = require("knockout");
 var grid = require("folke-ko-grid");
 var services_1 = require("./services");
@@ -23,5 +24,4 @@ var IdentityUsersViewModel = (function () {
     }
     return IdentityUsersViewModel;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = IdentityUsersViewModel;

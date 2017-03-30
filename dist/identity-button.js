@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var authentication_1 = require("./authentication");
 var folke_core_1 = require("folke-core");
 var IdentityButtonViewModel = (function () {
@@ -12,5 +13,4 @@ var IdentityButtonViewModel = (function () {
     }
     return IdentityButtonViewModel;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = IdentityButtonViewModel;

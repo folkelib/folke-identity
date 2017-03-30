@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ko = require("knockout");
 var services_1 = require("./services");
 var authentication = require("./authentication");
@@ -21,5 +22,4 @@ var IdentityPasswordViewModel = (function () {
     };
     return IdentityPasswordViewModel;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = IdentityPasswordViewModel;

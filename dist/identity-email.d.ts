@@ -9,5 +9,5 @@ export default class IdentityEmailViewModel<TKey> {
     constructor(params: Folke.Parameters<any>);
     dispose(): void;
     isValid: KnockoutComputed<boolean>;
-    submit: () => Promise<void>;
+    submit: () => Promise<void | undefined>;
 }

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ko = require("knockout");
 var services_1 = require("./services");
 var Folke = require("folke-core");
@@ -19,5 +20,4 @@ var IdentityForgotViewModel = (function () {
     };
     return IdentityForgotViewModel;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = IdentityForgotViewModel;

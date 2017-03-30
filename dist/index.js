@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var authentication_1 = require("./authentication");
 var folke_menu_1 = require("folke-menu");
 var ko = require("knockout");
@@ -82,5 +83,4 @@ function registerAdministrationMenu(role) {
     subMenu.addRouteButton(ko.observable('Rôles'), 'roles');
 }
 exports.registerAdministrationMenu = registerAdministrationMenu;
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = register;

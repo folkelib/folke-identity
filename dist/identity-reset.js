@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ko = require("knockout");
 var services_1 = require("./services");
 var folke_ko_validation_1 = require("folke-ko-validation");
@@ -23,5 +24,4 @@ var IdentityResetViewModel = (function () {
     };
     return IdentityResetViewModel;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = IdentityResetViewModel;

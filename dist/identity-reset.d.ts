@@ -11,5 +11,5 @@ export default class IdentityResetViewModel<TKey> {
     isValid: KnockoutComputed<boolean>;
     constructor(params: Folke.Parameters<any>);
     dispose(): void;
-    reset: () => Promise<void>;
+    reset: () => Promise<void | undefined>;
 }

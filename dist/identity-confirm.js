@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var services_1 = require("./services");
 var Authentication = require("./authentication");
 var ConfirmViewModel = (function () {
@@ -14,5 +15,4 @@ var ConfirmViewModel = (function () {
     ConfirmViewModel.prototype.dispose = function () { };
     return ConfirmViewModel;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ConfirmViewModel;

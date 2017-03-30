@@ -21,17 +21,16 @@
   "homepage": "https://github.com/folkelib/folke-identity#readme",
   "dependencies": {
     "@types/knockout": "~3.4.37",
-    "@types/whatwg-fetch": "0.0.32",
     "folke-core": "^1.1",
     "folke-ko-grid": "^1.1",
     "folke-ko-promise": "^1.1",
-    "folke-ko-service-helpers": "^1.1",
+    "folke-ko-service-helpers": "^1.2.0",
     "folke-ko-localization": "^1.1.1",
     "folke-ko-validation": "^1.1",
     "folke-menu": "^1.1"
   },
   "devDependencies": {
-    "typescript": "^2.1",
+    "typescript": "^2.2.2",
     "raw-loader": "^0.5.1"
   }
 }

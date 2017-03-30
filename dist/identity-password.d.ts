@@ -11,7 +11,7 @@ export default class IdentityPasswordViewModel {
     loading: () => boolean;
     constructor(params: Folke.Parameters<any>);
     dispose(): void;
-    submitChange: () => Promise<void>;
-    submitSet: () => Promise<void>;
+    submitChange: () => Promise<void | undefined>;
+    submitSet: () => Promise<void | undefined>;
     isValid: KnockoutComputed<boolean>;
 }

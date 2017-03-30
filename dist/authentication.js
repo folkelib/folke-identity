@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var services_1 = require("./services");
 var ko = require("knockout");
 var folke_core_1 = require("folke-core");
@@ -88,5 +89,4 @@ var Authentication = (function () {
     return Authentication;
 }());
 exports.Authentication = Authentication;
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = new Authentication();
