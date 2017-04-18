@@ -1,7 +1,6 @@
 /// <reference types="knockout" />
 import { User } from './services';
 export declare class Authentication<TKey> {
-    private services;
     account: KnockoutObservable<User<TKey>>;
     hideEmailConfirmBar: KnockoutObservable<boolean>;
     roles: KnockoutObservableArray<string>;

@@ -6,7 +6,6 @@ var folke_core_1 = require("folke-core");
 var Authentication = (function () {
     function Authentication() {
         var _this = this;
-        this.services = services_1.get();
         this.account = ko.observable();
         this.hideEmailConfirmBar = ko.observable(false);
         this.roles = ko.observableArray();
@@ -14,13 +13,13 @@ var Authentication = (function () {
         this.accountLoaded = ko.pureComputed(function () { return _this.account(); });
         this.logged = ko.computed(function () { return _this.account() && _this.account().logged; });
         this.logout = function () {
-            return _this.services.authentication.logOff({}).then(function () { return _this.updateMe(); });
+            return services_1.get().authentication.logOff({}).then(function () { return _this.updateMe(); });
         };
     }
     Authentication.prototype.updateMe = function () {
         var _this = this;
         this.updateRoles();
-        return this.services.account.getMe({}).then(function (account) {
+        return services_1.get().account.getMe({}).then(function (account) {
             _this.account(account);
             return account;
         });
@@ -31,7 +30,7 @@ var Authentication = (function () {
     Authentication.prototype.updateRoles = function () {
         var _this = this;
         this.rolesLoaded(null);
-        return this.services.account.getUserRoles({}).then(function (roles) {
+        return services_1.get().account.getUserRoles({}).then(function (roles) {
             _this.roles(roles);
             _this.rolesLoaded(true);
             return roles;
