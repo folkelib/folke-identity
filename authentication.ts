@@ -3,7 +3,6 @@ import ko = require('knockout');
 import Folke from 'folke-core';
 
 export class Authentication<TKey> {
-    private services = getServices<TKey>();
     public account = ko.observable<User<TKey>>();
     public hideEmailConfirmBar = ko.observable(false);
     public roles = ko.observableArray<string>();
@@ -15,14 +14,14 @@ export class Authentication<TKey> {
 
     public updateMe() {
         this.updateRoles();
-        return this.services.account.getMe({}).then(account => {
+        return getServices<TKey>().account.getMe({}).then(account => {
             this.account(account);
             return account;
         });
     }
 
     public logout = () => {
-        return this.services.authentication.logOff({}).then(() => this.updateMe());
+        return getServices<TKey>().authentication.logOff({}).then(() => this.updateMe());
     }
     
     public getLogged() {
@@ -31,7 +30,7 @@ export class Authentication<TKey> {
 
     public updateRoles() {
         this.rolesLoaded(null);
-        return this.services.account.getUserRoles({}).then(roles => {
+        return getServices<TKey>().account.getUserRoles({}).then(roles => {
             this.roles(roles);
             this.rolesLoaded(true);
             return roles;
