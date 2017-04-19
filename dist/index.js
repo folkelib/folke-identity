@@ -5,6 +5,7 @@ var folke_menu_1 = require("folke-menu");
 var ko = require("knockout");
 var koPromise = require("folke-ko-promise");
 var services_1 = require("./services");
+var folke_core_1 = require("folke-core");
 var identity_email_1 = require("./identity-email");
 var identity_forgot_1 = require("./identity-forgot");
 var identity_password_1 = require("./identity-password");
@@ -42,6 +43,7 @@ function registerComponent(name, viewModel) {
         template: require("./" + name + ".html"),
         viewModel: viewModel
     });
+    folke_core_1.default.addRoute(name, name);
 }
 function register(services, role) {
     registerBase(services);
