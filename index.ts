@@ -5,6 +5,7 @@ import * as ko from 'knockout';
 import * as koPromise from 'folke-ko-promise';
 import { register as registerServices, Services } from './services';
 import * as localization from 'folke-ko-localization';
+import Folke from 'folke-core';
 
 import email from './identity-email';
 import forgot from './identity-forgot';
@@ -38,6 +39,7 @@ function registerComponent<T>(name: string, viewModel: T) {
         template: require(`./${name}.html`),
         viewModel: viewModel
     })
+    Folke.addRoute(name, name);
 }
 
 export function register<TKey>(services: Services<TKey>, role: string) {

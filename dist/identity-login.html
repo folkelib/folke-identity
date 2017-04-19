@@ -7,20 +7,20 @@
         <form data-bind="submit: login">
             <fieldset class="large">
                 <label>{{identity.email}}</label>
-                <input type="text" data-bind="textInput: form.email, validate: form.email"/>
+                <input type="text" data-bind="textInput: email, validate: email"/>
             </fieldset>
             <fieldset class="large">
                 <label>{{identity.password}}</label>
-                <input type="password" data-bind="textInput: form.password, validate: form.password"/>
+                <input type="password" data-bind="textInput: password, validate: password"/>
             </fieldset>
             <fieldset>
-                <label><input type="checkbox" data-bind="checked: form.rememberMe"/> {{identity.rememberMe}} </label>
+                <label><input type="checkbox" data-bind="checked: rememberMe"/> {{identity.rememberMe}} </label>
             </fieldset>
             <fieldset class="pull-right">
                 <a href="#" data-bind="click: forgotPassword" class="hover">{{identity.forgotPassword}}</a>
             </fieldset>
             <footer>
-                <button class="button fit" type="submit" data-bind="enable: form.isValid() && !loading()">{{identity.loginButton}}</button>
+                <button class="button fit" type="submit" data-bind="enable: isValid() && !loading()">{{identity.loginButton}}</button>
             </footer>
         </form>
     </section>
