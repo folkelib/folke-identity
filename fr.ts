@@ -1,11 +1,14 @@
 ﻿export const fr = {
+    accountForgot: 'Mot-de-passe oublié',
+    accountForgotSubtitle: "Entrez l'adresse e-mail avec laquelle vous vous êtes inscrit",
     add: 'Ajouter',
     alreadyMember: 'Déjà membre',
+    backTo: "Retour à",
     changePassword: 'Modifier le mot de passe',
+    connectFB: "Connexion avec Facebook",
     createAccountTitle: "Création de compte",
     currentPassword: 'Mot de passe actuel',
     code: 'Code',
-    signupSocial: "Se connecter avec {0}",
     confirmPassword: 'Confirmation du mot de passe',  
     delete: 'Supprimer',  
     edit: 'Modifier',
@@ -20,9 +23,11 @@
     newPassword: 'Nouveau mot de passe',
     notAmember: "Pas encore membre ?",
     or: 'ou',
-    password: "Mot de passe",
+    password: "Mot-de-passe",
     registerNow: "Inscription",
     rememberMe: "Se souvenir de moi",
     resetPassword: 'Réinitialiser le mot de passe',
+    signin: "connexion",
+    signupSocial: "Se connecter avec Facebook",
     validate: 'Valider'
 }

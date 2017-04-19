@@ -7,25 +7,25 @@
         <form data-bind="submit: reset">
             <header>{{identity.enterCodeTitle}}</header>
             <fieldset class="container">
-                <fieldset class="large" data-bind="ifnot: form.userId">
+                <fieldset class="large" data-bind="ifnot: userId">
                     <label>{{identity.email}}</label>
-                    <input type="text" data-bind="textInput: form.email" />
+                    <input type="text" data-bind="textInput: email" />
                 </fieldset>
                 <fieldset class="large">
                     <label>{{identity.code}}</label>
-                    <input type="text" data-bind="textInput: form.code" />
+                    <input type="text" data-bind="textInput: code" />
                 </fieldset>
                 <fieldset class="large">
                     <label>{{identity.password}}</label>
-                    <input type="password" data-bind="textInput: form.password" />
+                    <input type="password" data-bind="textInput: password" />
                 </fieldset>
                 <fieldset class="large">
                     <label>{{identity.confirmPassword}}</label>
-                    <input type="password" data-bind="textInput: form.confirmPassword" />
+                    <input type="password" data-bind="textInput: confirmPassword" />
                 </fieldset>
 
                 <footer>
-                    <button type="submit">{{identity.validate}}</button>
+                    <button type="submit" data-bind="enable: isValid">{{identity.validate}}</button>
                 </footer>
             </fieldset>
         </form>

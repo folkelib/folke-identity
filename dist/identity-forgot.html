@@ -5,16 +5,16 @@
     </header>
     <section>
         <form data-bind="submit: ask">
-            <div>{{accountForgot.subtitle}}</div>
+            <div>{{identity.accountForgotSubtitle}}</div>
             <fieldset class="large">
-                <label>{{form.email}}</label>
-                <input type="text" data-bind="textInput: form.email"/>
+                <label>{{identity.email}}</label>
+                <input type="text" data-bind="textInput: email"/>
             </fieldset>
-            <button class="button purple fit" type="submit">{{form.submit}}</button>
+            <button class="button purple fit" data-bind="enable: isValid" type="submit">{{identity.submit}}</button>
         </form>
     </section>
 
     <footer>
-        {{accountForgot.backTo}} <a data-bind="click: login" href="">{{accountForgot.signin}}</a>
+        {{identity.backTo}} <a data-bind="click: login" href="">{{identity.signin}}</a>
     </footer>
 </section>
