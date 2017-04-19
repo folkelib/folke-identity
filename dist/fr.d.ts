@@ -1,11 +1,14 @@
 export declare const fr: {
+    accountForgot: string;
+    accountForgotSubtitle: string;
     add: string;
     alreadyMember: string;
+    backTo: string;
     changePassword: string;
+    connectFB: string;
     createAccountTitle: string;
     currentPassword: string;
     code: string;
-    signupSocial: string;
     confirmPassword: string;
     delete: string;
     edit: string;
@@ -24,5 +27,7 @@ export declare const fr: {
     registerNow: string;
     rememberMe: string;
     resetPassword: string;
+    signin: string;
+    signupSocial: string;
     validate: string;
 };
