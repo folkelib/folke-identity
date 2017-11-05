@@ -1,5 +1,3 @@
-import * as ko from 'knockout';
-
 export interface SetEmailView {
     email: string;
 }
@@ -8,8 +6,12 @@ export interface ForgotPasswordView {
     email: string;
 }
 
-export interface AuthenticationDescription {
-    authenticationScheme: string;
+export interface AuthenticationScheme {
+    name?: string;
+    
+    displayName?: string;
+
+    handlerType?: any;
 }
 
 export interface ChangePasswordView {
@@ -83,7 +85,7 @@ export interface AccountController<TKey> {
 
 export interface AuthenticationController<TKey> {
     forgotPassword: (params: { forgotPasswordView: ForgotPasswordView }) => Promise<{}>;
-    getExternalAuthenticationProviders: (params: {}) => Promise<AuthenticationDescription[]>;
+    getExternalAuthenticationProviders: (params: {}) => Promise<AuthenticationScheme[]>;
     login: (params: {loginView: LoginView}) => Promise<LoginResultView>;
     register: (params: { registerView: RegisterView }) => Promise<User<TKey>>;
     logOff: (params: {}) => Promise<{}>;
@@ -106,16 +108,3 @@ export interface Services<TKey> {
     role: RoleController<TKey>;
     loading: () => boolean;
 } 
-
-let services:Services<any> | null = null;
-
-export function get<TKey>():Services<TKey> {
-    if (services === null) {
-        throw new Error("register not called");
-    }
-    return services;
-}
-
-export function register<TKey>(options: Services<TKey>) {
-    services = options;
-}

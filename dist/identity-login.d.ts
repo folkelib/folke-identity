@@ -1,20 +1,25 @@
 /// <reference types="knockout" />
-import { AuthenticationDescription, User } from './services';
-import * as Folke from 'folke-core';
+import { AuthenticationScheme } from './services';
+import { Identity } from './identity';
 import { ValidableObservable } from "folke-ko-validation";
-export default class IdentityLoginViewModel<TKey> {
-    parameters: Folke.Parameters<User<TKey>>;
-    private services;
+export declare class IdentityLoginViewModel<TKey> {
+    props: {
+        identity: Identity<TKey>;
+        onLogin: () => void;
+    };
     email: ValidableObservable<string>;
     password: ValidableObservable<string>;
     rememberMe: KnockoutObservable<boolean>;
-    providers: KnockoutObservableArray<AuthenticationDescription>;
-    loading: () => boolean;
-    constructor(parameters: Folke.Parameters<User<TKey>>);
+    providers: KnockoutObservableArray<AuthenticationScheme>;
+    constructor(props: {
+        identity: Identity<TKey>;
+        onLogin: () => void;
+    });
+    render(): HTMLElement;
     login: () => void;
-    forgotPassword: () => PromiseLike<User<TKey>>;
-    register: () => PromiseLike<User<TKey>>;
+    forgotPassword: () => void;
+    register: () => void;
     dispose(): void;
-    facebookLogin: (provider: AuthenticationDescription) => void;
+    facebookLogin: (provider: AuthenticationScheme) => void;
     isValid: KnockoutComputed<boolean>;
 }

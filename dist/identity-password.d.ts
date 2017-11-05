@@ -1,17 +1,20 @@
 /// <reference types="knockout" />
-import * as Folke from 'folke-core';
 import { ValidableObservable } from "folke-ko-validation";
-export default class IdentityPasswordViewModel {
-    params: Folke.Parameters<any>;
-    private services;
+import { Identity } from './identity';
+export default class IdentityPasswordViewModel<TKey> {
+    private props;
+    constructor(props: {
+        identity: Identity<TKey>;
+        onChanged: () => void;
+    });
     oldPassword: ValidableObservable<string>;
     newPassword: ValidableObservable<string>;
     confirmPassword: ValidableObservable<string>;
     hasPassword: KnockoutComputed<boolean>;
     loading: () => boolean;
-    constructor(params: Folke.Parameters<any>);
+    render(): HTMLElement;
     dispose(): void;
-    submitChange: () => Promise<void | undefined>;
-    submitSet: () => Promise<void | undefined>;
+    submitChange: () => Promise<void>;
+    submitSet: () => Promise<void>;
     isValid: KnockoutComputed<boolean>;
 }

@@ -5,8 +5,10 @@ export interface SetEmailView {
 export interface ForgotPasswordView {
     email: string;
 }
-export interface AuthenticationDescription {
-    authenticationScheme: string;
+export interface AuthenticationScheme {
+    name?: string;
+    displayName?: string;
+    handlerType?: any;
 }
 export interface ChangePasswordView {
     confirmPassword: string;
@@ -82,7 +84,7 @@ export interface AuthenticationController<TKey> {
     forgotPassword: (params: {
         forgotPasswordView: ForgotPasswordView;
     }) => Promise<{}>;
-    getExternalAuthenticationProviders: (params: {}) => Promise<AuthenticationDescription[]>;
+    getExternalAuthenticationProviders: (params: {}) => Promise<AuthenticationScheme[]>;
     login: (params: {
         loginView: LoginView;
     }) => Promise<LoginResultView>;
@@ -124,5 +126,3 @@ export interface Services<TKey> {
     role: RoleController<TKey>;
     loading: () => boolean;
 }
-export declare function get<TKey>(): Services<TKey>;
-export declare function register<TKey>(options: Services<TKey>): void;

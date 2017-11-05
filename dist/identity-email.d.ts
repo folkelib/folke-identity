@@ -1,13 +1,13 @@
 /// <reference types="knockout" />
-import { ValidableObservable } from 'folke-ko-validation';
-import * as Folke from 'folke-core';
+import { Identity } from "./identity";
 export default class IdentityEmailViewModel<TKey> {
-    params: Folke.Parameters<any>;
-    private services;
-    email: ValidableObservable<string>;
-    loading: () => boolean;
-    constructor(params: Folke.Parameters<any>);
+    props: {
+        identity: Identity<TKey>;
+        onSubmit: () => void;
+    };
+    private email;
+    render(): HTMLElement;
     dispose(): void;
     isValid: KnockoutComputed<boolean>;
-    submit: () => Promise<void | undefined>;
+    submit: () => Promise<void>;
 }

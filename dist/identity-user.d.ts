@@ -1,5 +1,6 @@
 /// <reference types="knockout" />
 import { User, Services } from "./services";
+import { Identity } from "./identity";
 export declare class RoleView<TKey> {
     name: string;
     private userId;
@@ -8,11 +9,16 @@ export declare class RoleView<TKey> {
     checked: KnockoutComputed<boolean>;
     constructor(name: string, userId: string, services: Services<TKey>);
 }
-export default class ViewModel<TKey> {
-    private services;
+export declare class IdentityUser<TKey> {
+    props: {
+        id: string;
+        identity: Identity<TKey>;
+    };
     user: KnockoutObservable<User<TKey>>;
     roles: KnockoutObservableArray<RoleView<TKey>>;
-    constructor(params: {
+    constructor(props: {
         id: string;
+        identity: Identity<TKey>;
     });
+    render(): KnockoutObservableArray<HTMLElement>;
 }

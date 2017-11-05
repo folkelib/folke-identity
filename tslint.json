@@ -12,6 +12,7 @@
             "check-open-brace", "check-whitespace" 
         ],
         "no-string-literal": false,
-        "forin": false
+        "forin": false,
+        "no-unused-variable": true
     }
 }

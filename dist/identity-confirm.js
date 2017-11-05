@@ -1,18 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var services_1 = require("./services");
-var Authentication = require("./authentication");
-var ConfirmViewModel = (function () {
-    function ConfirmViewModel(params) {
-        this.services = services_1.get();
-        var accountId = params['id'];
-        var code = params['code*'];
-        this.services.authentication.confirmEmail({ userId: accountId, code: code }).then(function () {
-            Authentication.default.account().emailConfirmed = true;
-            params.resolve && params.resolve();
-        }, function (error) { return params.reject && params.reject(error); });
+var kjsx_1 = require("kjsx");
+var ConfirmViewModel = /** @class */ (function () {
+    function ConfirmViewModel(props) {
+        var _this = this;
+        this.props = props;
+        var accountId = props.id;
+        var code = props['code*'];
+        props.identity.services.authentication.confirmEmail({ userId: accountId, code: code }).then(function () {
+            _this.props.identity.account().emailConfirmed = true;
+            _this.props.onConfirm();
+        });
     }
-    ConfirmViewModel.prototype.dispose = function () { };
+    ConfirmViewModel.prototype.render = function () {
+        return kjsx_1.React.createElement("div", null);
+    };
     return ConfirmViewModel;
 }());
 exports.default = ConfirmViewModel;

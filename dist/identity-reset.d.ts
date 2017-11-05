@@ -1,15 +1,24 @@
-/// <reference types="knockout" />
-import * as Folke from 'folke-core';
-import { ValidableObservable } from "folke-ko-validation";
+import { Identity } from './identity';
 export default class IdentityResetViewModel<TKey> {
-    params: Folke.Parameters<any>;
-    private services;
-    password: ValidableObservable<string>;
-    confirmPassword: ValidableObservable<string>;
-    code: ValidableObservable<string>;
+    props: {
+        id?: string;
+        ["code*"]?: string;
+        onReset: () => void;
+        identity: Identity<TKey>;
+    };
+    private password;
+    private confirmPassword;
+    private code;
+    private email;
     private userId;
-    isValid: KnockoutComputed<boolean>;
-    constructor(params: Folke.Parameters<any>);
+    private isValid;
+    constructor(props: {
+        id?: string;
+        ["code*"]?: string;
+        onReset: () => void;
+        identity: Identity<TKey>;
+    });
+    render(): HTMLElement;
     dispose(): void;
-    reset: () => Promise<void | undefined>;
+    reset: () => Promise<void>;
 }

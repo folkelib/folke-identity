@@ -1,6 +1,11 @@
-import * as Folke from 'folke-core';
+import { Identity } from './identity';
 export default class ConfirmViewModel<TKey> {
-    private services;
-    constructor(params: Folke.Parameters<any>);
-    dispose(): void;
+    private props;
+    constructor(props: {
+        id: TKey;
+        ["code*"]: string;
+        identity: Identity<TKey>;
+        onConfirm: () => void;
+    });
+    render(): HTMLElement;
 }

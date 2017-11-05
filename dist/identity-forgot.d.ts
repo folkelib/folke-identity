@@ -1,14 +1,18 @@
 /// <reference types="knockout" />
-import { User } from './services';
-import * as Folke from 'folke-core';
-import { ValidableObservable } from "folke-ko-validation";
-export default class IdentityForgotViewModel<TKey> {
-    parameters: Folke.Parameters<User<TKey>>;
-    private services;
-    email: ValidableObservable<string>;
-    constructor(parameters: Folke.Parameters<User<TKey>>);
+import { Identity } from "./identity";
+export declare class IdentityForgotViewModel<TKey> {
+    props: {
+        identity: Identity<TKey>;
+        onConfirm: () => void;
+    };
+    constructor(props: {
+        identity: Identity<TKey>;
+        onConfirm: () => void;
+    });
+    private email;
+    render(): HTMLElement;
     dispose(): void;
     ask: () => void;
-    login: () => PromiseLike<User<TKey>>;
+    login: () => void;
     isValid: KnockoutComputed<boolean>;
 }

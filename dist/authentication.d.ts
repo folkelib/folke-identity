@@ -1,6 +1,13 @@
 /// <reference types="knockout" />
-import { User } from './services';
-export declare class Authentication<TKey> {
+import { Services, User } from './services';
+import { Application, Route } from 'folke-core';
+import { Identity } from './identity';
+import { Menu } from 'folke-menu';
+export declare class Authentication<TKey> implements Identity<TKey> {
+    app: Application;
+    services: Services<TKey>;
+    menu: Menu | undefined;
+    constructor(app: Application, services: Services<TKey>, menu?: Menu | undefined);
     account: KnockoutObservable<User<TKey>>;
     hideEmailConfirmBar: KnockoutObservable<boolean>;
     roles: KnockoutObservableArray<string>;
@@ -8,16 +15,19 @@ export declare class Authentication<TKey> {
     accountLoaded: KnockoutComputed<User<TKey>>;
     logged: KnockoutComputed<boolean>;
     updateMe(): Promise<User<TKey>>;
-    logout: () => Promise<{}>;
+    logout: () => Promise<User<TKey>>;
     getLogged(): Promise<boolean>;
     updateRoles(): Promise<string[]>;
     roleObservable(roleName: string): KnockoutComputed<boolean>;
     hasRole(roleName: string): boolean;
     whenHasRole(roleName: string): Promise<boolean>;
-    whenLogged(): Promise<boolean>;
-    addLoggedRoute(route: string, viewId: string): void;
-    addRoleRoute(route: string, role: string, viewId: string): void;
+    whenLogged(): Promise<{}>;
+    goToLogin(onLogin: () => void): void;
+    addLoggedRoute<T>(route: Route<T>): void;
+    addRoleRoute<T>(route: Route<T>, role: string): void;
     message(message: string): void;
+    register(adminRole: string): void;
+    registerAdministration(role: string): void;
+    registerMenu(): void;
+    registerAdministrationMenu(role: string): void;
 }
-declare var _default: Authentication<{}>;
-export default _default;
