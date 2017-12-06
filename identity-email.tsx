@@ -35,7 +35,7 @@ export default class IdentityEmailViewModel<TKey> {
     public dispose() {
     }
 
-    public isValid = ko.pureComputed(() => this.email.valid() && !this.props.identity.services.loading());
+    public isValid = ko.pureComputed(() => this.email.valid() && !this.props.identity.loading());
 
     public submit = () => this.props.identity.services.account.setEmail({ model: { email: this.email() } }).then(() => this.props.onSubmit());
 }

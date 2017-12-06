@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ko = require("knockout");
-var ServiceHelpers = require("folke-ko-service-helpers");
+var ServiceHelpers = require("folke-service-helpers");
 var folke_ko_validation_1 = require("folke-ko-validation");
 var kjsx_1 = require("kjsx");
 var identity_forgot_1 = require("./identity-forgot");
@@ -14,8 +14,11 @@ var IdentityLoginViewModel = /** @class */ (function () {
         this.password = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isRequired);
         this.rememberMe = ko.observable(false);
         this.providers = ko.observableArray();
+        this.loading = ko.observable(false);
         this.login = function () {
+            _this.loading(true);
             _this.props.identity.services.authentication.login({ loginView: { email: _this.email(), password: _this.password(), rememberMe: _this.rememberMe() } }).then(function (loginResult) {
+                _this.loading(false);
                 if (loginResult.status === 0 /* Success */) {
                     _this.props.identity.updateMe().then(function () { return _this.props.onLogin(); });
                 }
@@ -26,7 +29,7 @@ var IdentityLoginViewModel = /** @class */ (function () {
         this.facebookLogin = function (provider) {
             window.open('/api/authentication/external-login' + ServiceHelpers.getQueryString({ provider: provider.name, returnUrl: window.location.toString() }), 'oauth', 'dialog');
         };
-        this.isValid = ko.pureComputed(function () { return !_this.props.identity.services.loading() && _this.email.valid() && _this.password.valid(); });
+        this.isValid = ko.pureComputed(function () { return !_this.props.identity.loading() && _this.email.valid() && _this.password.valid(); });
         this.props.identity.services.authentication.getExternalAuthenticationProviders({}).then(function (providers) { return _this.providers(providers); });
     }
     IdentityLoginViewModel.prototype.render = function () {

@@ -13,7 +13,7 @@ import { register } from "folke-ko-promise";
 register();
 
 export class Authentication<TKey> implements Identity<TKey> {
-    constructor(public app: Application, public services: Services<TKey>, public menu?: Menu) {
+    constructor(public app: Application, public services: Services<TKey>, public loading: () => boolean, public menu?: Menu) {
         this.updateMe();
     }
 
@@ -75,13 +75,13 @@ export class Authentication<TKey> implements Identity<TKey> {
     }
 
     public addLoggedRoute<T>(route: Route<T>) {
-        this.app.addRoute({ route: route.route, onRoute: parameters => this.whenLogged().then(x => {
+        this.app.addRoute({ route: route.route, onRoute: (parameters:T) => this.whenLogged().then(x => {
             return route.onRoute(parameters);
         })});
     }
 
     public addRoleRoute<T>(route: Route<T>, role: string) {
-        this.app.addRoute({ route: route.route, onRoute: parameters => this.whenLogged().then(x => this.whenHasRole(role))
+        this.app.addRoute({ route: route.route, onRoute: (parameters:T) => this.whenLogged().then(x => this.whenHasRole(role))
             .then(hasRole => {
                 if (hasRole) {
                     return route.onRoute(parameters);

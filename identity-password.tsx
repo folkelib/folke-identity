@@ -10,7 +10,7 @@ export default class IdentityPasswordViewModel<TKey> {
     public newPassword = validableObservable("").addValidator(isRequired);
     public confirmPassword = validableObservable("").addValidator(areSame(this.newPassword));
     public hasPassword = ko.pureComputed(() => this.props.identity.account().hasPassword);
-    public loading = this.props.identity.services.loading;
+    public loading = this.props.identity.loading;
 
     public render() {
         return <section class="identity-popin popin">
@@ -65,7 +65,7 @@ export default class IdentityPasswordViewModel<TKey> {
     }
 
     public submitChange = () => this.props.identity.services.account.changePassword({ view: { confirmPassword: this.confirmPassword(), newPassword: this.newPassword(), oldPassword: this.oldPassword() } }).then(() => this.props.onChanged());
-    public submitSet = () => this.props.identity.services.account.setPassword({ model: { newPassword: this.newPassword() } }).then(() => this.props.onChanged());
+    public submitSet = () => this.props.identity.services.account.setPassword({ model: { newPassword: this.newPassword(), confirmPassword: this.confirmPassword() } }).then(() => this.props.onChanged());
 
     public isValid = ko.pureComputed(() => (this.hasPassword() || this.oldPassword.valid()) && this.newPassword.valid() && this.confirmPassword.valid());
 }

@@ -11,9 +11,9 @@ var IdentityPasswordViewModel = /** @class */ (function () {
         this.newPassword = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isRequired);
         this.confirmPassword = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.areSame(this.newPassword));
         this.hasPassword = ko.pureComputed(function () { return _this.props.identity.account().hasPassword; });
-        this.loading = this.props.identity.services.loading;
+        this.loading = this.props.identity.loading;
         this.submitChange = function () { return _this.props.identity.services.account.changePassword({ view: { confirmPassword: _this.confirmPassword(), newPassword: _this.newPassword(), oldPassword: _this.oldPassword() } }).then(function () { return _this.props.onChanged(); }); };
-        this.submitSet = function () { return _this.props.identity.services.account.setPassword({ model: { newPassword: _this.newPassword() } }).then(function () { return _this.props.onChanged(); }); };
+        this.submitSet = function () { return _this.props.identity.services.account.setPassword({ model: { newPassword: _this.newPassword(), confirmPassword: _this.confirmPassword() } }).then(function () { return _this.props.onChanged(); }); };
         this.isValid = ko.pureComputed(function () { return (_this.hasPassword() || _this.oldPassword.valid()) && _this.newPassword.valid() && _this.confirmPassword.valid(); });
     }
     IdentityPasswordViewModel.prototype.render = function () {

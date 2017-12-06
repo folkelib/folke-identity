@@ -17,10 +17,11 @@ var identity_roles_1 = require("./identity-roles");
 var folke_ko_promise_1 = require("folke-ko-promise");
 folke_ko_promise_1.register();
 var Authentication = /** @class */ (function () {
-    function Authentication(app, services, menu) {
+    function Authentication(app, services, loading, menu) {
         var _this = this;
         this.app = app;
         this.services = services;
+        this.loading = loading;
         this.menu = menu;
         this.account = ko.observable();
         this.hideEmailConfirmBar = ko.observable(false);

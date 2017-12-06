@@ -6,8 +6,9 @@ import { Menu } from 'folke-menu';
 export declare class Authentication<TKey> implements Identity<TKey> {
     app: Application;
     services: Services<TKey>;
+    loading: () => boolean;
     menu: Menu | undefined;
-    constructor(app: Application, services: Services<TKey>, menu?: Menu | undefined);
+    constructor(app: Application, services: Services<TKey>, loading: () => boolean, menu?: Menu | undefined);
     account: KnockoutObservable<User<TKey>>;
     hideEmailConfirmBar: KnockoutObservable<boolean>;
     roles: KnockoutObservableArray<string>;

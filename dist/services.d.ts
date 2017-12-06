@@ -6,9 +6,8 @@ export interface ForgotPasswordView {
     email: string;
 }
 export interface AuthenticationScheme {
-    name?: string;
-    displayName?: string;
-    handlerType?: any;
+    name: string | null;
+    displayName: string | null;
 }
 export interface ChangePasswordView {
     confirmPassword: string;
@@ -33,6 +32,7 @@ export interface ResetPasswordView {
     code: string;
     password: string;
     confirmPassword: string;
+    email: string;
 }
 export interface RoleView<TKey> {
     name: string;
@@ -40,6 +40,7 @@ export interface RoleView<TKey> {
 }
 export interface SetPasswordView {
     newPassword: string;
+    confirmPassword: string;
 }
 export interface UserSearchFilter {
     name: string;
@@ -124,5 +125,4 @@ export interface Services<TKey> {
     account: AccountController<TKey>;
     authentication: AuthenticationController<TKey>;
     role: RoleController<TKey>;
-    loading: () => boolean;
 }

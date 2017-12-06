@@ -9,6 +9,7 @@ export interface Identity<TKey> {
     hideEmailConfirmBar(hide: boolean): void;
     account: KnockoutObservable<User<TKey>>;
     logged: KnockoutObservable<boolean>;
+    loading: () => boolean;
     goToLogin(onLogin: () => void): void;
     addLoggedRoute<T>(route: Route<T>): void;
     addRoleRoute<T>(route: Route<T>, role: string): void;

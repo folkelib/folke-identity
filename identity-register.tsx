@@ -2,13 +2,13 @@ import * as ko from 'knockout';
 import { validableObservable, isEmail, isRequired, areSame } from "folke-ko-validation";
 import { React, ko_if, ko_ifnot, ko_foreach } from "kjsx";
 import { Identity } from './identity';
-import { getQueryString } from 'folke-ko-service-helpers';
+import { getQueryString } from 'folke-service-helpers';
 
 export default class IdentityRegisterViewModel<TKey> {
     private email = validableObservable("").addValidator(isEmail).addValidator(isRequired);
     private password = validableObservable("").addValidator(isRequired);
     private confirmPassword = validableObservable("").addValidator(areSame(this.password));
-    private isValid = ko.pureComputed(() => !this.props.identity.services.loading() && this.email.valid() && this.password.valid() && this.confirmPassword.valid());
+    private isValid = ko.pureComputed(() => !this.props.identity.loading() && this.email.valid() && this.password.valid() && this.confirmPassword.valid());
 
 
     constructor(public props: { identity: Identity<TKey>, onRegister: () => void }) {

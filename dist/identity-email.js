@@ -7,7 +7,7 @@ var IdentityEmailViewModel = /** @class */ (function () {
     function IdentityEmailViewModel() {
         var _this = this;
         this.email = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isEmail).addValidator(folke_ko_validation_1.isRequired);
-        this.isValid = ko.pureComputed(function () { return _this.email.valid() && !_this.props.identity.services.loading(); });
+        this.isValid = ko.pureComputed(function () { return _this.email.valid() && !_this.props.identity.loading(); });
         this.submit = function () { return _this.props.identity.services.account.setEmail({ model: { email: _this.email() } }).then(function () { return _this.props.onSubmit(); }); };
     }
     IdentityEmailViewModel.prototype.render = function () {

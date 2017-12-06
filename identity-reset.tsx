@@ -10,7 +10,7 @@ export default class IdentityResetViewModel<TKey> {
     private email = validableObservable("").addValidator(isEmail);
     private userId: string;
     
-    private isValid = ko.pureComputed(() => !this.props.identity.services.loading() && this.password.valid() && this.code.valid() && this.confirmPassword.valid());
+    private isValid = ko.pureComputed(() => !this.props.identity.loading() && this.password.valid() && this.code.valid() && this.confirmPassword.valid());
 
     constructor(public props: { id?: string, ["code*"]?: string, onReset: () => void, identity: Identity<TKey> }) {
         if (props.id) {
@@ -63,5 +63,5 @@ export default class IdentityResetViewModel<TKey> {
     public dispose() {
     }
 
-    public reset = () => this.props.identity.services.authentication.resetPassword({ resetPasswordView: { code: this.code(), userId: this.userId, confirmPassword: this.confirmPassword(), password: this.password() } }).then(() => this.props.onReset());
+    public reset = () => this.props.identity.services.authentication.resetPassword({ resetPasswordView: { code: this.code(), userId: this.userId, confirmPassword: this.confirmPassword(), password: this.password(), email: this.email() } }).then(() => this.props.onReset());
 }

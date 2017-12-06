@@ -1,8 +1,8 @@
 import ko = require("knockout");
 import { AuthenticationScheme, LoginView, LoginStatusEnum, User } from './services';
 import { Identity } from './identity';
-import { Application, Parameters } from 'folke-core';
-import * as ServiceHelpers from "folke-ko-service-helpers";
+import { Application } from 'folke-core';
+import * as ServiceHelpers from "folke-service-helpers";
 import { ValidableObservable, validableObservable, isEmail, isRequired, areSame } from "folke-ko-validation";
 import { React, ko_if, ko_ifnot, ko_foreach } from "kjsx";
 import { IdentityForgotViewModel} from "./identity-forgot";
@@ -60,8 +60,12 @@ export class IdentityLoginViewModel<TKey> {
     </section>
     }
 
+    private loading = ko.observable(false);
+
     public login = () => {
+        this.loading(true);
         this.props.identity.services.authentication.login({ loginView: { email: this.email(), password: this.password(), rememberMe: this.rememberMe() } }).then(loginResult => {
+            this.loading(false);
             if (loginResult.status === LoginStatusEnum.Success) {
                 this.props.identity.updateMe().then(() => this.props.onLogin());
             }            
@@ -78,5 +82,5 @@ export class IdentityLoginViewModel<TKey> {
         window.open('/api/authentication/external-login' + ServiceHelpers.getQueryString({ provider: provider.name, returnUrl: window.location.toString() }), 'oauth', 'dialog');
     }
 
-    public isValid = ko.pureComputed(() => !this.props.identity.services.loading() && this.email.valid() && this.password.valid());
+    public isValid = ko.pureComputed(() => !this.props.identity.loading() && this.email.valid() && this.password.valid());
 }

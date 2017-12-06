@@ -13,7 +13,7 @@ var IdentityForgotViewModel = /** @class */ (function () {
             _this.props.identity.services.authentication.forgotPassword({ forgotPasswordView: { email: _this.email() } }).then(function () { return _this.props.identity.app.showPopin(kjsx_1.React.createElement(identity_reset_1.default, { identity: _this.props.identity, onReset: _this.props.onConfirm })); });
         };
         this.login = function () { return _this.props.identity.goToLogin(_this.props.onConfirm); };
-        this.isValid = ko.pureComputed(function () { return !_this.props.identity.services.loading() && _this.email.valid(); });
+        this.isValid = ko.pureComputed(function () { return !_this.props.identity.loading() && _this.email.valid(); });
     }
     IdentityForgotViewModel.prototype.render = function () {
         return kjsx_1.React.createElement("section", { class: "identity-popin popin" },

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ko = require("knockout");
 var folke_ko_validation_1 = require("folke-ko-validation");
 var kjsx_1 = require("kjsx");
-var folke_ko_service_helpers_1 = require("folke-ko-service-helpers");
+var folke_service_helpers_1 = require("folke-service-helpers");
 var IdentityRegisterViewModel = /** @class */ (function () {
     function IdentityRegisterViewModel(props) {
         var _this = this;
@@ -11,7 +11,7 @@ var IdentityRegisterViewModel = /** @class */ (function () {
         this.email = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isEmail).addValidator(folke_ko_validation_1.isRequired);
         this.password = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isRequired);
         this.confirmPassword = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.areSame(this.password));
-        this.isValid = ko.pureComputed(function () { return !_this.props.identity.services.loading() && _this.email.valid() && _this.password.valid() && _this.confirmPassword.valid(); });
+        this.isValid = ko.pureComputed(function () { return !_this.props.identity.loading() && _this.email.valid() && _this.password.valid() && _this.confirmPassword.valid(); });
         this.login = function () { return _this.props.identity.goToLogin(_this.props.onRegister); };
         this.register = function () {
             _this.props.identity.services.authentication.register({ registerView: { email: _this.email(), password: _this.password(), confirmPassword: _this.confirmPassword() } }).then(function (view) {
@@ -21,7 +21,7 @@ var IdentityRegisterViewModel = /** @class */ (function () {
             }).then(function (view) { return _this.props.onRegister(); });
         };
         this.facebookLogin = function () {
-            window.open('/api/authentication/external-login' + folke_ko_service_helpers_1.getQueryString({ provider: 'Facebook', returnUrl: window.location.toString() }), 'oauth', 'dialog');
+            window.open('/api/authentication/external-login' + folke_service_helpers_1.getQueryString({ provider: 'Facebook', returnUrl: window.location.toString() }), 'oauth', 'dialog');
         };
     }
     IdentityRegisterViewModel.prototype.render = function () {

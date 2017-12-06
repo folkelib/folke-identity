@@ -40,5 +40,5 @@ export class IdentityForgotViewModel<TKey> {
 
     public login = () => this.props.identity.goToLogin(this.props.onConfirm);
 
-    public isValid = ko.pureComputed(() => !this.props.identity.services.loading() && this.email.valid());
+    public isValid = ko.pureComputed(() => !this.props.identity.loading() && this.email.valid());
 }

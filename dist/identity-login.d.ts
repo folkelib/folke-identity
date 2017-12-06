@@ -16,6 +16,7 @@ export declare class IdentityLoginViewModel<TKey> {
         onLogin: () => void;
     });
     render(): HTMLElement;
+    private loading;
     login: () => void;
     forgotPassword: () => void;
     register: () => void;

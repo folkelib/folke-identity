@@ -11,8 +11,8 @@ var IdentityResetViewModel = /** @class */ (function () {
         this.confirmPassword = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isRequired).addValidator(folke_ko_validation_1.areSame(this.password));
         this.code = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isRequired);
         this.email = folke_ko_validation_1.validableObservable("").addValidator(folke_ko_validation_1.isEmail);
-        this.isValid = ko.pureComputed(function () { return !_this.props.identity.services.loading() && _this.password.valid() && _this.code.valid() && _this.confirmPassword.valid(); });
-        this.reset = function () { return _this.props.identity.services.authentication.resetPassword({ resetPasswordView: { code: _this.code(), userId: _this.userId, confirmPassword: _this.confirmPassword(), password: _this.password() } }).then(function () { return _this.props.onReset(); }); };
+        this.isValid = ko.pureComputed(function () { return !_this.props.identity.loading() && _this.password.valid() && _this.code.valid() && _this.confirmPassword.valid(); });
+        this.reset = function () { return _this.props.identity.services.authentication.resetPassword({ resetPasswordView: { code: _this.code(), userId: _this.userId, confirmPassword: _this.confirmPassword(), password: _this.password(), email: _this.email() } }).then(function () { return _this.props.onReset(); }); };
         if (props.id) {
             this.userId = props.id;
         }
